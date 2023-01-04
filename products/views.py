@@ -5,8 +5,10 @@ from django.http import HttpResponse
 
 
 def inicio(request):
+    
+    
     return render(request=request, 
-                  template_name='/home/lean/Proyectos_Coder/django1/vivero_online/vivero_online/templates/vivero_online/base.html',
+                  template_name='products/home.html',
                   )
 
 def Listaproductos(request):
@@ -19,5 +21,9 @@ def Listaproductos(request):
                   context=contexto,
                   )
    
-
+def registro(request):
+    return render(request=request, 
+                  template_name='products/registro.html',
+                  
+                  )
 

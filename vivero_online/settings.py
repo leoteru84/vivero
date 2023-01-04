@@ -38,8 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'products',
-    'clientes',
-    'vivero_online',
+    
 ]
 
 MIDDLEWARE = [
