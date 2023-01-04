@@ -1,0 +1,17 @@
+
+{% extends "/home/lean/Proyectos_Coder/django1/vivero_online/vivero_online/templates/vivero_online/base.html" %}
+
+{% block contenido %}
+
+<section>
+  <div>
+    <h1>Lista de productos</h1>
+    <ul>  
+    {% for planta in plantas %}
+      <li> {{ planta }} </li>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+
+{% endblock contenido %}
