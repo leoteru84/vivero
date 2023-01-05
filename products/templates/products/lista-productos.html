@@ -3,12 +3,22 @@
 
 {% block contenido %}
 
+
 <section>
-  <div>
-    <h1>Lista de productos</h1>
-    <ul>  
-    {% for planta in plantas %}
-      <li> {{ planta }} </li>
+ <div>
+    <h1 style='color:#198754'>Lista de productos</h1>
+    <ul> 
+      <h1 style="color: brown;">Plantines</h1> 
+    {% for planta in plantin %}
+      <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }} </li>
+    {% endfor %}
+    <h1 style="color: brown;">Frutales</h1>
+    {% for planta in Frutal %}
+    <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }}  </li>
+    {% endfor %}
+    <h1 style="color: brown;">Arboles</h1>
+    {% for planta in Arboles %}
+    <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }}  </li>
     {% endfor %}
     </ul>
   </div>

@@ -6,3 +6,4 @@ class Cliente(models.Model):
     apellido=models.CharField(max_length=128)
     edad=models.IntegerField()
     email=models.EmailField()
+    

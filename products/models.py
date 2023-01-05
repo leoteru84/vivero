@@ -6,8 +6,11 @@ from django.db import models
 class Plantin(models.Model):
     nombre=models.CharField(max_length=200)
     tipo=models.CharField(max_length=128)
-    tamaño=models.IntegerField()
+    tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    
+    def __str__(self):
+        return f'{self.nombre}'
     
 
 
@@ -15,7 +18,7 @@ class Plantin(models.Model):
 class Arbol(models.Model):
     nombre=models.CharField(max_length=200)
     tipo=models.CharField(max_length=128)
-    tamaño=models.IntegerField()
+    tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
     
     
@@ -23,7 +26,8 @@ class Arbol(models.Model):
 class Frutal(models.Model):
     nombre=models.CharField(max_length=200)
     tipo=models.CharField(max_length=128)
-    tamaño=models.IntegerField()
+    tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
     
-    
+    def __str__(self):
+        return f'{self.nombre}'
