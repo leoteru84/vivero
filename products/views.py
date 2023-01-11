@@ -26,3 +26,15 @@ def Listaproductos(request):
                   context=contexto,
                   )
 
+def cargaPlantin(request):
+    if request.method == "POST":
+     data= request.POST 
+     plantin=Plantin(nombre='nombre',tipo='tipo',tamaño='tamaño',stock='stock')
+      
+    else:
+      return render(
+          request=request,
+          template_name="products/cargaProducts.html"
+          
+               )
+    
