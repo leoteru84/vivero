@@ -1,29 +1,40 @@
+{% extends 'products/base.html'%}
 
-{% extends "products/base.html" %}
+{%load static%}
+
+{% block titulo %} Lista de Productos {% endblock titulo %}
+
+  
+
+
 
 {% block contenido %}
-{% block titulo %}
-Lista de Productos
-{% endblock titulo %}
+<body>
 
-<section>
- <div>
-    <h1 style='color:#198754'>Lista de productos</h1>
-    <ul> 
-      <h1 style="color: brown;">Plantines</h1> 
-    {% for planta in plantin %}
-      <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }} </li>
-    {% endfor %}
-    <h1 style="color: brown;">Frutales</h1>
-    {% for planta in Frutal %}
-    <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }}  </li>
-    {% endfor %}
-    <h1 style="color: brown;">Arboles</h1>
-    {% for planta in Arboles %}
-    <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }}  </li>
-    {% endfor %}
-    </ul>
-  </div>
-</section>
+<div id="contenedor">
+  <div id="central">
+      <div id="login">
+          <div>
+           <a href="{% url 'listaplantin'%}">
+           <button type="btn-btn-primary" title="Plantines" >
+             LISTA PLANTINES
+           </button>
+           <a href="{% url 'listaarbol'%}">
+           <button type="btn-btn-primary" title="Arboles" >
+              LISTA ARBOLES
+           </button>
+           <a href="{% url 'listafrutal'%}">
+           <button type="btn-btn-primary" title="Frutales" >
+              LISTA FRUTALES
+           </button>
+          </div>
+       </div>
+   </div>
+</div>
+
+ 
+</body>
 
 {% endblock contenido %}
+{% block listar %}
+{% endblock listar %}

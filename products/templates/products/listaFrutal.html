@@ -1,0 +1,29 @@
+{% extends "products/base.html" %}
+{% block titulo %} Lista de Frutales {% endblock titulo %}
+{% block contenido %}
+
+<section>
+<div>
+<h1 style='color:#198754'>Lista de Frutales </h1>
+<a href="{% url 'frutal' %}">Carga de Frutales</a>
+<br>
+
+<form action="{% url 'buscafrutal' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="nombre">
+  <input type="submit" value="Buscar">
+</form>
+<br>
+
+<ul>
+ {% for planta in Frutales %}
+  <li> {{ planta.nombre}},{{ planta.stock }}</li>
+ {% endfor %}
+</ul>
+</div>
+</section>
+
+  
+
+
+{% endblock contenido %}

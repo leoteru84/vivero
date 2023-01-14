@@ -1,0 +1,27 @@
+{% extends "products/base.html" %}
+{% block titulo %} Lista de Productos {% endblock titulo %}
+{% block contenido %}
+
+
+<section>
+  <div>
+    <h1 style='color:#198754'>Lista de Plantines</h1>
+    <a href="{% url 'arbol' %}" >Carga De Plantines</a>
+
+
+ <form action="{% url 'buscaplantin' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="nombre">
+      <input type="submit" value="Buscar">
+</form>
+<br>
+<ul> 
+  <h1 style="color: brown;">Plantines</h1> 
+    {% for planta in Plantines %}
+      <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }} </li>
+    {% endfor %}
+</ul>
+</div>
+</section>
+
+{% endblock contenido %}
