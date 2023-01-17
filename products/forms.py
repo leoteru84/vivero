@@ -5,6 +5,7 @@ class CargaPlantin(forms.Form):
     tipo=forms.CharField(max_length=128)
     tamaño=forms.CharField(max_length=200)
     stock=forms.IntegerField(required=True)
+  
    
     
 class CargaFrutal(forms.Form):

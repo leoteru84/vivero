@@ -5,7 +5,10 @@ body {
     color: #1b262c;
     
     margin: 0;
-    background-color: #c6f7b7;
+   
+    background-image: url('fondo.jpg');
+    
+    
 }
 
 #contenedor {
@@ -28,7 +31,7 @@ body {
 
 .titulo {
     font-size: 250%;
-    color:#bbe1fa;
+    color:#0e1a22;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -36,7 +39,7 @@ body {
 #login {
     width: 100%;
     padding: 50px 30px;
-    background-color: #3282b8;
+    background-color: #d8ffed;
     
     -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
@@ -86,14 +89,14 @@ body {
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
     
-    background-color: #bbe1fa;
+    background-color: #21a378;
     
     margin-top: 10px;
 }
 
 #login button:hover {
-    background-color: #71dbe2;
-    color:#bbe1fa;
+    background-color: #030d0e;
+    color:#0d9b19;
 }
 
 .pie-form {
@@ -105,7 +108,7 @@ body {
 .pie-form a {
     display: block;
     text-decoration: none;
-    color: #bbe1fa;
+    color: #95cbee;
     margin-bottom: 3px;
 }
 
@@ -129,3 +132,4 @@ body {
 .inferior a:hover {
     color: #3282b8;
 }
+

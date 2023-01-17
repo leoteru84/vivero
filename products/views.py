@@ -1,8 +1,9 @@
 
 from django.db.models import Q
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
 from django.http import HttpResponse
+from django.views.generic import ListView, DetailView,DeleteView,UpdateView,CreateView
 
 from products.models import Plantin, Frutal, Arbol
 from products.forms import *
@@ -21,117 +22,6 @@ def Listaproductos(request):
                   template_name='products/lista-productos.html',
 
                   )
-
-
-def listarArbol(request):
-    contexto = {
-        'Arboles': Arbol.objects.all(),
-    }
-    return render(request=request,
-                  template_name='products/listaArbol.html',
-                  context=contexto,
-
-                  )
-
-
-def listarPlantin(request):
-    contexto = {
-        'Plantines': Plantin.objects.all(),
-    }
-    return render(request=request,
-                  template_name='products/listaPlantin.html',
-                  context=contexto,
-
-                  )
-
-
-def listarFrutal(request):
-    contexto = {
-        'Frutales': Frutal.objects.all(),
-    }
-    return render(request=request,
-                  template_name='products/listaFrutal.html',
-                  context=contexto,
-
-                  )
-
-
-def cargarPlantin(request):
-    if request.method == 'POST':
-        formulario = CargaPlantin(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            plantin = Plantin(nombre=data['nombre'],
-                              tipo=data['tipo'],
-                              tamaño=data['tamaño'],
-                              stock=data['stock'],
-
-
-
-                              )
-            plantin.save()
-            url_exitosa = reverse('Productos')
-            return redirect(url_exitosa)
-
-    else:  # GET
-        formulario = CargaPlantin()
-    return render(
-        request=request,
-        template_name='products/cargaPlantin.html',
-        context={'formulario': formulario},
-    )
-
-
-def cargarFrutal(request):
-    if request.method == 'POST':
-        formulario = CargaFrutal(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            frutal = Frutal(nombre=data['nombre'],
-                            tipo=data['tipo'],
-                            tamaño=data['tamaño'],
-                            stock=data['stock'],
-
-
-
-                            )
-            frutal.save()
-            url_exitosa = reverse('Productos')
-            return redirect(url_exitosa)
-
-    else:  # GET
-        formulario = CargaFrutal()
-    return render(
-        request=request,
-        template_name='products/cargaFrutal.html',
-        context={'formulario': formulario},
-    )
-
-
-def cargarArbol(request):
-    if request.method == 'POST':
-        formulario = CargaArbol(request.POST)
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            arbol = Arbol(nombre=data['nombre'],
-                          tipo=data['tipo'],
-                          tamaño=data['tamaño'],
-                          stock=data['stock'],
-
-
-
-                          )
-            arbol.save()
-            url_exitosa = reverse('Productos')
-            return redirect(url_exitosa)
-
-    else:  # GET
-        formulario = CargaArbol()
-    return render(
-        request=request,
-        template_name='products/cargaArbol.html',
-        context={'formulario': formulario},
-    )
 
 
 
@@ -182,4 +72,90 @@ def busca_plantin(request):
             template_name='products/listaPlantin.html',
             context=contexto,
         )
+        
+        
+##Form de Arboles
+
+class ArbolListView(ListView):
+    model = Arbol
+    template_name = 'products/listaArbol.html'
+
+class ArbolcreateView(CreateView):
+    model=Arbol
+    fields = ['nombre', 'tipo', 'tamaño', 'stock']
+    success_url=reverse_lazy('listarbol')
+
+
+class ArbolUpdateView(UpdateView):
+    model=Arbol
+    fields = ['nombre', 'tipo', 'tamaño', 'stock']
+    success_url=reverse_lazy('listarbol')
+
+class ArbolDetailView(DetailView):
+    model=Arbol
+    success_url=reverse_lazy('verarbol')
+    
+class ArbolDeleteView(DeleteView):
+    model=Arbol
+    success_url=reverse_lazy('listarbol')
+
+
+##Form Frutales
+class FrutalListView(ListView):
+    model = Frutal
+    template_name = 'products/listaFrutal.html'
+
+class FrutalcreateView(CreateView):
+    model=Frutal
+    fields = ['nombre', 'tipo', 'tamaño', 'stock']
+    success_url=reverse_lazy('listfrutal')
+
+
+class FrutalUpdateView(UpdateView):
+    model=Frutal
+    fields = ['nombre', 'tipo', 'tamaño', 'stock']
+    success_url=reverse_lazy('listfrutal')
+
+class FrutalDetailView(DetailView):
+    model=Frutal
+    success_url=reverse_lazy('verfrutal')
+    
+class FrutalDeleteView(DeleteView):
+    model=Frutal
+    success_url=reverse_lazy('listfrutal')
+    
+    
+    
+## Forms Plantin
+
+class PlantinListView(ListView):
+    model = Plantin
+    template_name = 'products/listaPlantin.html'
+
+class PlantincreateView(CreateView):
+    model=Plantin
+    fields = ['nombre', 'tipo', 'tamaño', 'stock']
+    success_url=reverse_lazy('listplantin')
+
+
+class PlantinUpdateView(UpdateView):
+    model=Plantin
+    fields = ['nombre', 'tipo', 'tamaño', 'stock']
+    success_url=reverse_lazy('listplantin')
+
+class PlantinDetailView(DetailView):
+    model=Plantin
+    success_url=reverse_lazy('verplantin')
+    
+class PlantinDeleteView(DeleteView):
+    model=Plantin
+    success_url=reverse_lazy('listplantin')
+
+
+
+
+
+
+
+
     

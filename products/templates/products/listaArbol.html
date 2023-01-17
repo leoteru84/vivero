@@ -6,22 +6,52 @@
     
     <div>
         <h1 style='color:#198754'>Lista de Arboles</h1>
-        <a href="{% url 'arbol' %}">Carga de Arboles</a>
-        <br>
+        <a href="{% url 'createarbol'%}">
+            <button type="btn-btn-primary" title="Plantines" >
+              Carga Arboles
+            </button>
+            <br>        
+            <br>
+        </a>
 
- <form action="{% url 'buscaarbol' %}" method="post">
+ <form action="{% url 'buscaarbol'  %}" method="post">
     {% csrf_token %}
     <input type="text" name="nombre">
     <input type="submit" value="Buscar">
- </form>
- <br>
+    
+  </form>
+  {{ planta.nombre}}
+  {{ planta.stock }}
 
- <ul> 
-  
-  {% for planta in Arboles %}
-  <li > {{ planta.nombre}},{{ planta.stock }}  </li>
-  {% endfor %}
- </ul>
+ <br>
+ <table class="table" >
+  <tbody >
+    <tr>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+     
+    </tr>
+    {% for planta in object_list %}
+    <tr>
+      <th>{{ planta.nombre}}</th>
+      <th>{{ planta.stock }}</th>
+      <td>
+      <a href="{% url 'verarbol' planta.id %}">Ver</a> 
+      </td>
+      <td>
+      <a href="{% url 'editarbol' planta.id %}">Editar</a>
+      </td>
+      <td>
+        <a href="{% url 'eliminaarbol' planta.id %}">Eliminar</a>
+      </td>
+    </tr>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+ </table>
+
+ 
 </div>
 
 <section>

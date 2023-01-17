@@ -6,7 +6,13 @@
 <section>
   <div>
     <h1 style='color:#198754'>Lista de Plantines</h1>
-    <a href="{% url 'arbol' %}" >Carga De Plantines</a>
+    <a href="{% url 'createplantin'%}">
+      <button type="btn-btn-primary" title="Plantines" >
+        Carga Plantines
+      </button>
+      <br>
+      <br>
+    </a>
 
 
  <form action="{% url 'buscaplantin' %}" method="post">
@@ -15,12 +21,28 @@
       <input type="submit" value="Buscar">
 </form>
 <br>
-<ul> 
-  <h1 style="color: brown;">Plantines</h1> 
-    {% for planta in Plantines %}
-      <li class="list-group-item"> {{ planta.nombre}},{{ planta.stock }} </li>
+<table class="table" >
+  <tbody >
+    <tr>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+     
+    </tr>
+    {% for planta in object_list %}
+    <tr>
+      <th>{{ planta.nombre}}</th>
+      <th>{{ planta.stock }}</th>
+      <td>
+      <a href="{% url 'verplantin' planta.id %}">Ver</a> 
+      </td>
+      <td>Editar</td>
+      <td>Eliminar</td>
+    </tr>
+    </tr>
     {% endfor %}
-</ul>
+    
+  </tbody>
+ </table>
 </div>
 </section>
 

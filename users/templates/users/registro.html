@@ -6,37 +6,8 @@
  {% endblock titulo %}
  
  {% block contenido %}
- 
- <head>
-         
-    <meta charset="utf-8">
-    
-       
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="author" content="Videojuegos & Desarrollo">
-    <meta name="description" content="Muestra de un formulario de acceso en HTML y CSS">
-    <meta name="keywords" content="Formulario Acceso, Formulario de LogIn">
-    
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
-    <link href="{% static 'css/login.css' %}" rel="stylesheet">
-    
-    <!-- Link hacia el archivo de estilos css -->
-    
-    
-    <style type="text/css">
-        
-    </style>
-    
-    <script type="text/javascript">
-    
-    </script>
-    
-</head>
- 
-<body>
+
+ <body>
          
     <div id="contenedor">
         <div id="central">
@@ -61,13 +32,12 @@
     
     
     
-    <input type='submit' value='Enviar'>
+    <button type="submit" title="Registrar" name="Ingresar">Registrar</button>
 
 
  </form>
  <div class="pie-form">
-    <a href="#">¿Perdiste tu contraseña?</a>
-    <a href="{% url 'registro' %}">¿No tienes Cuenta? Registrate</a>
+    <a href="{% url 'login' %}">Volver</a>
 </div>
 </div>
 

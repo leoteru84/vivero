@@ -5,8 +5,14 @@
 <section>
 <div>
 <h1 style='color:#198754'>Lista de Frutales </h1>
-<a href="{% url 'frutal' %}">Carga de Frutales</a>
+
+<a href="{% url 'createfrutal'%}">
+  <button type="btn-btn-primary" title="Plantines" >
+    Carga Frutales
+  </button>
+  <br>
 <br>
+</a>
 
 <form action="{% url 'buscafrutal' %}" method="post">
   {% csrf_token %}
@@ -15,11 +21,33 @@
 </form>
 <br>
 
-<ul>
- {% for planta in Frutales %}
-  <li> {{ planta.nombre}},{{ planta.stock }}</li>
- {% endfor %}
-</ul>
+<table class="table" >
+  <tbody >
+    <tr>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+     
+    </tr>
+    {% for planta in object_list %}
+    <tr>
+      <th>{{ planta.nombre}}</th>
+      <th>{{ planta.stock }}</th>
+      <td>
+      <a href="{% url 'verfrutal' planta.id %}">Ver</a> 
+      </td>
+      <td>
+        <a href="{% url 'editfrutal' planta.id %}">Editar</a>
+        </td>
+        <td>
+          <a href="{% url 'eliminafrutal' planta.id %}">Eliminar</a>
+        </td>
+      
+    </tr>
+    </tr>
+    {% endfor %}
+    
+  </tbody>
+ </table>
 </div>
 </section>
 

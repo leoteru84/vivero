@@ -6,6 +6,12 @@ class RegistroUsuario(forms.Form):
     fechaNacimiento=forms.DateField()
     edad=forms.IntegerField()
     email=forms.EmailField()
+    
+    
+    
+class LoginUsuario(forms.Form):
+
+    pass
    
     
 

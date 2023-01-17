@@ -23,6 +23,15 @@ def login(request):
     )
 
 
+
+
+
+
+
+
+
+
+
 def registro(request):
     if request.method == 'POST':
         formulario = RegistroUsuario(request.POST)

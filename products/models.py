@@ -8,6 +8,7 @@ class Plantin(models.Model):
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    
    
     
     def __str__(self):
@@ -21,6 +22,8 @@ class Arbol(models.Model):
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    
+
    
     def __str__(self):
         return f'{self.nombre}'
@@ -30,6 +33,8 @@ class Frutal(models.Model):
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    
+
   
     def __str__(self):
         return f'{self.nombre}'
