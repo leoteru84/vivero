@@ -3,30 +3,25 @@
 {% block contenido %}
 
 <section>
-    
-    <div>
-        <h1 style='color:#198754'>Lista de Arboles</h1>
-        <a href="{% url 'arbol' %}">Carga de Arboles</a>
-        <br>
-
- <form action="{% url 'buscaarbol' %}" method="post">
+  <div>
+  <h1 style='color:#198754'>Lista de Arboles </h1>
+  <a href="{% url 'arbol' %}">Carga de Arboles</a>
+  <br>
+  
+  <form action="{% url 'buscaarbol' %}" method="post">
     {% csrf_token %}
     <input type="text" name="nombre">
     <input type="submit" value="Buscar">
- </form>
- <br>
-
- <ul> 
+  </form>
+  <br>
   
-  {% for planta in Arboles %}
-  <li > {{ planta.nombre}},{{ planta.stock }}  </li>
-  {% endfor %}
- </ul>
-</div>
-
-<section>
-    
-<div>
+  <ul>
+   {% for planta in Arboles %}
+    <li> {{ planta.nombre}},{{ planta.stock }}</li>
+   {% endfor %}
+  </ul>
+  </div>
+  </section>
 
 
 
