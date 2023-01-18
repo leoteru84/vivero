@@ -6,13 +6,7 @@
 <section>
   <div>
     <h1 style='color:#198754'>Lista de Plantines</h1>
-    <a href="{% url 'createplantin'%}">
-      <button type="btn-btn-primary" title="Plantines" >
-        Carga Plantines
-      </button>
-      <br>
-      <br>
-    </a>
+    <a href="{% url 'createplantin' %}" >Carga De Plantines</a>
 
 
  <form action="{% url 'buscaplantin' %}" method="post">
@@ -21,6 +15,7 @@
       <input type="submit" value="Buscar">
 </form>
 <br>
+
 <table class="table" >
   <tbody >
     <tr>
@@ -35,8 +30,13 @@
       <td>
       <a href="{% url 'verplantin' planta.id %}">Ver</a> 
       </td>
-      <td>Editar</td>
-      <td>Eliminar</td>
+      <td>
+        <a href="{% url 'editplantin' planta.id %}">Editar</a>
+        </td>
+        <td>
+          <a href="{% url 'eliminaplantin' planta.id %}">Eliminar</a>
+        </td>
+      
     </tr>
     </tr>
     {% endfor %}

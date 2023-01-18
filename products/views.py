@@ -35,7 +35,7 @@ def busca_arboles(request):
             Q(nombre__contains=data['nombre']) 
         )
         contexto = {
-            'Arboles': arbol
+            'object_list': arbol
         }
         return render(
             request=request,
@@ -50,7 +50,7 @@ def busca_frutales(request):
             Q(nombre__contains=data['nombre']) 
         )
         contexto = {
-            'Frutales': frutal
+            'object_list': frutal
         }
         return render(
             request=request,
@@ -65,7 +65,7 @@ def busca_plantin(request):
             Q(nombre__contains=data['nombre']) 
         )
         contexto = {
-            'Plantines': plantin
+            'object_list': plantin
         }
         return render(
             request=request,
