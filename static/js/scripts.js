@@ -5,3 +5,11 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+
+var resultado = window.confirm('Estas seguro?');
+if (resultado === true) {
+    window.alert('Okay, si estas seguro.');
+} else { 
+    window.alert('Pareces indeciso');
+}

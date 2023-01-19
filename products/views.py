@@ -10,12 +10,6 @@ from products.forms import *
 
 
 
-def cargaProductos(request):
-    return render(request=request,
-                  template_name='products/cargaproductos.html',
-                  )
-
-
 def Listaproductos(request):
 
     return render(request=request,
@@ -31,11 +25,8 @@ def busca_arboles(request):
         arbol = Arbol.objects.filter(
             Q(nombre__contains=data['nombre']) 
         )
-        frutal = Frutal.objects.filter(
-            Q(nombre__contains=data['nombre']) 
-        )
         contexto = {
-            'object_list': arbol
+            'object_list': arbol,
         }
         return render(
             request=request,

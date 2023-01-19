@@ -6,7 +6,13 @@
 <section>
   <div>
     <h1 style='color:#198754'>Lista de Plantines</h1>
-    <a href="{% url 'createplantin' %}" >Carga De Plantines</a>
+    <a href="{% url 'createplantin'%}">
+      <button type="btn-btn-primary" title="Plantines" >
+        Carga Plantines
+      </button>
+      <br>
+    <br>
+    </a>
 
 
  <form action="{% url 'buscaplantin' %}" method="post">

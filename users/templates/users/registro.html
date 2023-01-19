@@ -15,24 +15,10 @@
                 <div class="titulo">
                     Registro de Usuario
                 </div>
- <form action="{% url 'registro' %}" method='post'>
+ <form  method='post'>
     {%csrf_token%}
-    <p> Nombre:</p>
-    <input type='text' name='nombre'>
-    <p> Apellido:</p>
-    <input type='text' name='apellido'>
-    <p> Fecha de Nacimiento:</p>
-    <input type='date' name='fechaNacimiento'>
-    <p> Edad:</p>
-    <input type='number' name='edad'>
-    <p> E-mail:</p>
-    <input type='text' name='email'>
- 
-    
-    
-    
-    
-    <button type="submit" title="Registrar" name="Ingresar">Registrar</button>
+    {{formulario.as_p}}
+   <button type="submit" title="Registrar" name="Ingresar">Registrar</button>
 
 
  </form>

@@ -18,12 +18,9 @@
                      <div class="titulo">
                          Inicie Sesión
                      </div>
-                     <form id="loginform">
+                     <form method='post'>
                          {% csrf_token %}
-                         <input type="text" name="usuario" placeholder="Usuario" required>
-
-                         
-                         <input type="password" placeholder="Contraseña" name="password" required>
+                         {{form.as_p}}
                          
                          <button type="submit" title="Ingresar" name="Ingresar">Login</button>
                      </form>
