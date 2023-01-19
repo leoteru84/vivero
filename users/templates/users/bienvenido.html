@@ -1,0 +1,14 @@
+{% extends "products/base.html" %}
+{% load  static %}
+ 
+{% block titulo %}
+    Inicio
+{% endblock titulo %}
+ 
+{% block contenido %}
+
+
+<h1>Hola, {{ request.user.first_name }}, Bienvenid@ </h1>
+
+
+{% endblock contenido %}

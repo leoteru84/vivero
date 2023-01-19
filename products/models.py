@@ -8,6 +8,7 @@ class Plantin(models.Model):
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    precio=models.FloatField(null=True)
     
    
     
@@ -22,6 +23,7 @@ class Arbol(models.Model):
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    precio=models.FloatField(null=True)
     
 
    
@@ -33,6 +35,7 @@ class Frutal(models.Model):
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField()
+    precio=models.FloatField(null=True)
     
 
   

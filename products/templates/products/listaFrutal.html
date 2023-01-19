@@ -32,6 +32,7 @@
     <tr>
       <th>{{ planta.nombre}}</th>
       <th>{{ planta.stock }}</th>
+      {% if user.is_staff %}
       <td>
       <a href="{% url 'verfrutal' planta.id %}">Ver</a> 
       </td>
@@ -41,7 +42,7 @@
         <td>
           <a href="{% url 'eliminafrutal' planta.id %}">Eliminar</a>
         </td>
-      
+      {% endif %}
     </tr>
     </tr>
     {% endfor %}

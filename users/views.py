@@ -6,7 +6,7 @@ from users.forms import  RegistroForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, LoginView
 
 
 # Create your views here.
@@ -47,7 +47,7 @@ def login_view(request):
             # user puede ser un usuario o None
             if user:
                 login(request=request, user=user)
-                url_exitosa = reverse('Productos')
+                url_exitosa = reverse('bienvenida')
                 return redirect(url_exitosa)
     else:  # GET
         form = AuthenticationForm()
@@ -60,4 +60,10 @@ def login_view(request):
     
 class CustomLogoutView(LogoutView):
     template_name = 'users/logout.html'
-    next_page = reverse_lazy('login')
+    next_page = reverse_lazy('logout')
+    
+    
+    
+class CustomLoginView(LoginView):
+    template_name = 'users/bienvenido.html'
+    next_page = reverse_lazy('bienvenida')
