@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView, DetailView,DeleteView,UpdateView,CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from products.models import Plantin, Frutal, Arbol
+from products.models import Plantin, Frutal, Arbol,Planta
 from products.forms import *
 
 
@@ -18,6 +18,21 @@ def Listaproductos(request):
 
                   )
 
+
+def busca_planta(request):
+    if request.method == "POST":
+        data = request.POST
+        planta = Planta.objects.filter(
+            Q(nombre__contains=data['nombre']) 
+        )
+        contexto = {
+            'plantas': planta,
+        }
+        return render(
+            request=request,
+            template_name='products/listaPlantas.html',
+            context=contexto,
+        )
 
 
 def busca_arboles(request):

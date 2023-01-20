@@ -4,6 +4,7 @@
 
 <section>
 <div>
+  {% if user.is_staff %} 
 <h1 style='color:#198754'>Lista de Frutales </h1>
 
 <a href="{% url 'createfrutal'%}">
@@ -13,7 +14,7 @@
   <br>
 <br>
 </a>
-
+{% endif %}
 <form action="{% url 'buscafrutal' %}" method="post">
   {% csrf_token %}
   <input type="text" name="nombre">

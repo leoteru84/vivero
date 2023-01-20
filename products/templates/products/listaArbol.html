@@ -5,6 +5,7 @@
 <section>
     
     <div>
+      {% if user.is_staff %}
         <h1 style='color:#198754'>Lista de Arboles</h1>
         <a href="{% url 'createarbol'%}">
             <button type="btn-btn-primary" title="Arboles" >
@@ -13,7 +14,7 @@
             <br>        
             <br>
         </a>
-
+      {% endif %}
  <form action="{% url 'buscaarbol'  %}" method="post">
     {% csrf_token %}
     <input type="text" name="nombre">
@@ -46,6 +47,9 @@
         <a href="{% url 'eliminaarbol' planta.id %}">Eliminar</a>
       </td>
       {% endif %}
+      <td>
+        <a href="">Agregar al carrito</a>
+      </td>
     </tr>
     </tr>
     {% endfor %}

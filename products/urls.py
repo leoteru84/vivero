@@ -26,6 +26,7 @@ urlpatterns = [
      path('Buscar-Arbol/',busca_arboles, name= 'buscaarbol'),# type: ignore
      path('Buscar-Frutal/',busca_frutales, name= 'buscafrutal'),# type: ignore
      path('Buscar-Plantin/',busca_plantin, name= 'buscaplantin'),# type: ignore
+     path('Buscar-Plantas/',busca_planta, name= 'buscaplanta'),# type: ignore
      #Url Arbol
      path('Carga-Arbol/', ArbolcreateView.as_view(), name='createarbol'),
      path('Ver-arbol/<int:pk>/', ArbolDetailView.as_view(), name='verarbol'),
