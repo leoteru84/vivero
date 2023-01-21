@@ -7,6 +7,8 @@ from django.views.generic import ListView, DetailView,DeleteView,UpdateView,Crea
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from products.models import Plantin, Frutal, Arbol,Planta
+from products.carrito import Carrito
+
 from products.forms import *
 
 
@@ -104,7 +106,8 @@ class ArbolDetailView(DetailView):
     
 class ArbolDeleteView(LoginRequiredMixin,DeleteView):
     model=Arbol
-    success_url=reverse_lazy('listarbol')
+    success_url=reverse_lazy('')
+    template_name='products/arbol_confirm_delete.html'
 
 
 ##Form Frutales
@@ -157,6 +160,46 @@ class PlantinDetailView(DetailView):
 class PlantinDeleteView(LoginRequiredMixin,DeleteView):
     model=Plantin
     success_url=reverse_lazy('listplantin')
+    
+    
+    
+##PRUEBA DE CARRITO
+########################################
+
+
+
+def carro(request):
+   return render (request=request, 
+                   template_name="products/carrito.html",
+                   )
+
+
+def agregar_carrito(request,planta_id):
+    carrito = Carrito(request)
+    planta=Planta.objects.get(id=planta_id)
+    carrito.agregar(planta)
+    return redirect("carro")
+
+
+
+def eliminar_carrito(request,planta_id):
+    carrito=Carrito(request)
+    planta=Planta.objects.get(id=planta_id)
+    carrito.eliminar(planta)
+    return redirect("carro")
+    
+def restar_carrito(request,planta_id):
+    carrito=Carrito(request)
+    planta=Planta.objects.get(id=planta_id)
+    carrito.restar(planta)
+    return redirect("carro")
+
+
+def limpiar_carrito(request):
+    carrito=Carrito(request)
+    carrito.limpiar()
+    return redirect("carro")
+    
 
 
 

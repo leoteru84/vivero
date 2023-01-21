@@ -1,17 +1,11 @@
-from products.models import Arbol, Plantin, Frutal, Planta
-
-
-
-
-
 class Carrito:
     def __init__(self,request):
         self.request=request
         self.session=request.session
-        carrito=self.session["carrito"]
+        carrito=self.session
         if not carrito:
-            self.session["carrito"]={}
-            self.carrito=self.session["carrito"]
+            #self.session={}
+            self.carrito=self.session
         else:
             self.carrito=carrito
             
@@ -24,7 +18,7 @@ class Carrito:
             'nombre':planta.nombre,
             'acumulado':planta.precio,
             'cantidad':1,
-        }
+                     }
         else:
             self.carrito[id]["cantidad"] += 1
             self.carrito[id]["acumulado"] += planta.precio
@@ -52,9 +46,9 @@ class Carrito:
         
     
     
-    def limpiar(self)           :
-        self.session["carrito"] = {}
-        self.session.modified = True
+    def limpiar(self):
+        self.session = {}
+        #self.session.modified = True
             
             
             

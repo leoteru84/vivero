@@ -33,6 +33,13 @@ urlpatterns = [
      path('Eliminar-arbol/<int:pk>/', ArbolDeleteView.as_view(), name='eliminaarbol'),
      path('Edita-arbol/<int:pk>/', ArbolUpdateView.as_view(), name='editarbol'),
      path('Listar-arbol/', ArbolListView.as_view(), name='listarbol'),
+     
+     ##PRUEBA CARRITO
+     path('Carrito/', carro, name='carro'),
+     path('Carrito-agrega/<int:planta_id>/', agregar_carrito, name='addcarrito'),
+     path('Carrito-elimina/<int:planta_id>/', eliminar_carrito, name='eliminacarrito'),
+     path('Carrito-resta/<int:planta_id>/', restar_carrito, name='restacarrito'),
+     path('Carrito-limpia/', limpiar_carrito, name='limpiacarrito'),
   
     
      

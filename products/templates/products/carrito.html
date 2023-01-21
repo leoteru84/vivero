@@ -17,8 +17,8 @@
             </tr>
         </thead>
         <tbody>
-            {% if request.session.carrito.items %}
-             {% for key, planta in request.session.carrito.items  %}
+            {% if request.session.cartito.items %}
+             {% for planta in request.session.carrito.items  %}
              <tr>
                 <td>{{planta_nombre}}</td>
                 <td>{{planta_precio}}</td>
@@ -50,6 +50,7 @@
         <div class="row text-center">
             <div><a href="{% url 'limpiacarrito' %}" class="btn btn-danger">Limpiar</a></div>
             <div><a href="#" class="btn btn-sucess">Guardar</a></div>
+            <a href="{% url 'Productos' %}">Volver al Listado</a>
 
         </div>
     </div>

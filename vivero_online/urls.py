@@ -28,6 +28,8 @@ urlpatterns = [
     path('',inicio, name='inicio'),
     path('Usuario/',include('users.urls')),
     path('Productos/',include('products.urls')),
+   
+   
     
     
 

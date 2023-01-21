@@ -27,12 +27,14 @@
     <tr>
       <th>Nombre</th>
       <th>Cantidad</th>
+      <th>Precio</th>
      
     </tr>
     {% for planta in object_list %}
-    <tr>
+     <tr>
       <th>{{ planta.nombre}}</th>
       <th>{{ planta.stock }}</th>
+      
       {% if user.is_staff %}
       <td>
       <a href="{% url 'verfrutal' planta.id %}">Ver</a> 
@@ -44,9 +46,20 @@
           <a href="{% url 'eliminafrutal' planta.id %}">Eliminar</a>
         </td>
       {% endif %}
-    </tr>
+      
+     
+     
+      {% if user.is_authenticated %}
+      <th>{{ planta.precio }}</th>
+      <td>
+        <a href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
+      </td>
+      {% endif %}
     </tr>
     {% endfor %}
+    <div class="pie-form">
+     <a href="{% url 'Productos' %}">Volver al Listado</a>
+    </div>
     
   </tbody>
  </table>

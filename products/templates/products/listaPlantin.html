@@ -45,9 +45,19 @@
           <a href="{% url 'eliminaplantin' planta.id %}">Eliminar</a>
         </td>
       {% endif %}
-    </tr>
+      
+    
+    {% if user.is_authenticated %}
+    <th>{{ planta.precio }}</th>
+     <td>
+       <a href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
+      </td>
+      {% endif %}
     </tr>
     {% endfor %}
+    <div class="pie-form">
+      <a href="{% url 'Productos' %}">Volver al Listado</a>
+  </div>
     
   </tbody>
  </table>

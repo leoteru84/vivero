@@ -44,15 +44,46 @@
       <a href="{% url 'editarbol' planta.id %}">Editar</a>
       </td>
       <td>
-        <a href="{% url 'eliminaarbol' planta.id %}">Eliminar</a>
+        <button href="{% url 'eliminaarbol' planta.id %}" type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Eliminar
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+                
+              </div>
+              <div class="modal-body">
+                <h3>Estas seguro que queres eliminar este elemento?</h3>
+              </div>
+              <div href="{% url 'eliminaarbol' planta.id %}" class="modal-footer">
+                <button class="btn btn-primary" >Eliminar</button>
+                
+                
+                
+              </div>
+            </div>
+          </div>
+        </div>
       </td>
       {% endif %}
+      {% if user.is_authenticated %}
+      <th>{{ planta.precio }}</th>
+      
       <td>
-        <a href="">Agregar al carrito</a>
+        <a  class="btn btn-dark"href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
       </td>
-    </tr>
+      {% endif %}
+   
+    
     </tr>
     {% endfor %}
+    <div class="pie-form">
+      <a href="{% url 'Productos' %}">Volver al Listado</a>
+  </div>
     
   </tbody>
  </table>
