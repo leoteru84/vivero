@@ -18,6 +18,7 @@ from django.urls import path, include
 from users.views import  inicio
 from django.conf.urls.static import static
 from django.conf import settings
+from products.views import tienda
 
 
 
@@ -28,6 +29,9 @@ urlpatterns = [
     path('',inicio, name='inicio'),
     path('Usuario/',include('users.urls')),
     path('Productos/',include('products.urls')),
+    path('Tienda/', tienda, name='tienda'),
+    
+
    
    
     

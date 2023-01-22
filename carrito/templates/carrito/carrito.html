@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block contenido %}
-<div class="container">
+<div style="dropdown"class="container">
 <div class="alert alert-primary" role="alert">
     <table class="table table-bordered">
         <thead>
@@ -23,8 +23,8 @@
                 <td>{{planta_nombre}}</td>
                 <td>{{planta_precio}}</td>
                 <td>{{planta_acumulado}}
-                    <a href="{% url 'addcarrito' planta_id %}" class="badge btn btn-dark badge-dark">+</a>
-                    <a href="{% url 'restacarrito' planta_id %}" class="badge btn btn-dark badge-dark">-</a>
+                    <a href="{% url 'addcarrito' planta.planta_id %}" class="badge btn btn-dark badge-dark">+</a>
+                    <a href="{% url 'restacarrito' planta.planta_id %}" class="badge btn btn-dark badge-dark">-</a>
 
                 </td>
              </tr>

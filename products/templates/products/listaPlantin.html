@@ -50,7 +50,7 @@
     {% if user.is_authenticated %}
     <th>{{ planta.precio }}</th>
      <td>
-       <a href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
+       <a class="btn btn-dark" href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
       </td>
       {% endif %}
     </tr>

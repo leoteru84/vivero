@@ -33,18 +33,37 @@
            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
            </li>
            <li class="nav-item">
-            <a class="nav-link" href="{% url 'Productos' %}">Tienda</a>
+            <a class="nav-link" href="{% url 'tienda' %}">Tienda</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'carro' %}">Carrito</a>
               </li>
+              <!--dropdown del carrito-->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="products/carrito.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+              <!--dropdown del carrito-->
           {% endif %}
+            <li class="nav-item">
+            <a class="nav-link" href="#">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Acerca de Nosotr@s</a>
+            </li>
           
         </ul>
-        
           
         
         
+      
       </div>
     </div>
   </nav>
@@ -57,16 +76,12 @@
    
    
    
-   <footer class="footer bg-light" style="central">
+<footer class="footer bg-light" style="falign-self: flex-end;">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                 <ul class="list-inline mb-2">
-                    <li class="list-inline-item"><a href="#!">Acerca de Nosotros</a></li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">Contacto</a></li>
-                    <li class="list-inline-item">⋅</li>
-                  
+                    
                 </ul>
                 <p class="text-muted small mb-4 mb-lg-0">&copy; --</p>
                 <div class="col-lg-6 h-100 text-center text-lg-end my-auto">

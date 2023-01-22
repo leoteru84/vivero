@@ -85,6 +85,15 @@ def busca_plantin(request):
         
 ##Form de Arboles
 
+class PlantaListView(ListView): ###viendo funcion
+    model = Arbol
+    template_name = ''
+    context_object_name='planta_list'
+    pass
+
+
+
+
 class ArbolListView(ListView):
     model = Arbol
     template_name = 'products/listaArbol.html'
@@ -166,11 +175,21 @@ class PlantinDeleteView(LoginRequiredMixin,DeleteView):
 ##PRUEBA DE CARRITO
 ########################################
 
+def tienda(request):
+   planta=Planta.objects.all()
+   return render (request=request, 
+                   template_name="products/tienda.html",
+                   context={'planta':planta}
+                   )
+
+
+
 
 
 def carro(request):
    return render (request=request, 
                    template_name="products/carrito.html",
+                   
                    )
 
 
@@ -178,7 +197,7 @@ def agregar_carrito(request,planta_id):
     carrito = Carrito(request)
     planta=Planta.objects.get(id=planta_id)
     carrito.agregar(planta)
-    return redirect("carro")
+    return redirect("tienda")
 
 
 
@@ -186,19 +205,19 @@ def eliminar_carrito(request,planta_id):
     carrito=Carrito(request)
     planta=Planta.objects.get(id=planta_id)
     carrito.eliminar(planta)
-    return redirect("carro")
+    return redirect("tienda")
     
 def restar_carrito(request,planta_id):
     carrito=Carrito(request)
     planta=Planta.objects.get(id=planta_id)
     carrito.restar(planta)
-    return redirect("carro")
+    return redirect("tienda")
 
 
 def limpiar_carrito(request):
     carrito=Carrito(request)
     carrito.limpiar()
-    return redirect("carro")
+    return redirect("tienda")
     
 
 
