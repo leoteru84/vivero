@@ -60,10 +60,11 @@ def login_view(request):
     
 class CustomLogoutView(LogoutView):
     template_name = 'users/logout.html'
-    next_page = reverse_lazy('logout')
+    next_page = reverse_lazy('login')
     
     
     
 class CustomLoginView(LoginView):
     template_name = 'users/bienvenido.html'
-    next_page = reverse_lazy('bienvenida')
+    next_page =reverse_lazy('products/tienda.html')
+   

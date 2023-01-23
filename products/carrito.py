@@ -4,30 +4,27 @@ class Carrito:
         self.session=request.session
         carrito=self.session.get("carrito")
         if not carrito:
-            self.session["carrito"]={}
-            self.carrito=self.session["carrito"]
-        else:
-            self.carrito=carrito
+           carrito=self.session["carrito"]={}
+            
+        #else:
+        self.carrito=carrito
             
     
     def agregar(self,planta):
         id=str(planta.id)
         if id not in self.carrito.keys():
-           self.carrito[planta.id]={
+           self.carrito[id]={
             'planta_id': planta.id,
             'nombre':planta.nombre,
             'precio':str(planta.precio),
             'cantidad':1,
                 }
         else:
-            #self.carrito[id]["cantidad"] += 1
-            #self.carrito[id]["acumulado"] += planta.precio
-            #self.guardar()
-            for key, value in self.carrito.items():
+           for key, value in self.carrito.items():
                 if key == id:
                     value["cantidad"]+= 1
-                    self.guardar()
-                    break
+        self.guardar()
+                    
     
     
     

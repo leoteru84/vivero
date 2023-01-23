@@ -7,12 +7,12 @@ Inicio
 
 {% block contenido %}
 
-
+  {% if not user.is_authenticated %}
    <body>
-     
+    
     <div id="contenedor">
         <div id="central">
-            <div id="login">
+           <div id="login">
                 <div class="titulo">
                     Bienvenid@ a Vivero Rullo
                 </div>
@@ -33,5 +33,6 @@ Inicio
         
  </body>
 
- </html>
+ 
+ {% endif %}
 {% endblock contenido %}

@@ -7,8 +7,21 @@
  
 {% block contenido %}
 
+    <div id="contenedor">
+        <div id="central">
+            <div id="login">
+                <div class="titulo">
+                   <p> Hola,{{user.first_name}}</p>
+                    Bienvenid@ a Vivero Rullo
+                </div>
+           
+             </div>
+            
+        </div>
+    </div>
+        
+ 
 
-<h1>Hola, {{ request.user.first_name }}, Bienvenid@ </h1>
 
 
 {% endblock contenido %}

@@ -85,13 +85,6 @@ def busca_plantin(request):
         
 ##Form de Arboles
 
-class PlantaListView(ListView): ###viendo funcion
-    model = Arbol
-    template_name = ''
-    context_object_name='planta_list'
-    pass
-
-
 
 
 class ArbolListView(ListView):
@@ -100,13 +93,13 @@ class ArbolListView(ListView):
 
 class ArbolcreateView(LoginRequiredMixin,CreateView):
     model=Arbol
-    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio']
+    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
     success_url=reverse_lazy('listarbol')
 
 
 class ArbolUpdateView(LoginRequiredMixin,UpdateView):
     model=Arbol
-    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio']
+    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
     success_url=reverse_lazy('listarbol')
 
 class ArbolDetailView(DetailView):
@@ -115,8 +108,8 @@ class ArbolDetailView(DetailView):
     
 class ArbolDeleteView(LoginRequiredMixin,DeleteView):
     model=Arbol
-    success_url=reverse_lazy('')
-    template_name='products/arbol_confirm_delete.html'
+    success_url=reverse_lazy('listarbol')
+    #template_name='products/arbol_confirm_delete.html'
 
 
 ##Form Frutales
@@ -126,13 +119,13 @@ class FrutalListView(ListView):
 
 class FrutalcreateView(LoginRequiredMixin,CreateView):
     model=Frutal
-    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio']
+    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
     success_url=reverse_lazy('listfrutal')
 
 
 class FrutalUpdateView(LoginRequiredMixin,UpdateView):
     model=Frutal
-    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio']
+    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
     success_url=reverse_lazy('listfrutal')
 
 class FrutalDetailView(DetailView):
@@ -153,13 +146,13 @@ class PlantinListView(ListView):
 
 class PlantincreateView(LoginRequiredMixin,CreateView):
     model=Plantin
-    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio']
+    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
     success_url=reverse_lazy('listplantin')
 
 
 class PlantinUpdateView(LoginRequiredMixin,UpdateView):
     model=Plantin
-    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio']
+    fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
     success_url=reverse_lazy('listplantin')
 
 class PlantinDetailView(DetailView):
@@ -177,10 +170,10 @@ class PlantinDeleteView(LoginRequiredMixin,DeleteView):
 
 def tienda(request):
    planta=Planta.objects.all()
-   return render (request=request, 
-                   template_name="products/tienda.html",
-                   context={'planta':planta}
-                   )
+   return render (request=request,
+                  template_name="products/tienda.html",
+                  context={'planta':planta},
+                  )
 
 
 
@@ -196,7 +189,7 @@ def carro(request):
 def agregar_carrito(request,planta_id):
     carrito = Carrito(request)
     planta=Planta.objects.get(id=planta_id)
-    carrito.agregar(planta)
+    carrito.agregar(planta=planta)
     return redirect("tienda")
 
 
@@ -204,13 +197,13 @@ def agregar_carrito(request,planta_id):
 def eliminar_carrito(request,planta_id):
     carrito=Carrito(request)
     planta=Planta.objects.get(id=planta_id)
-    carrito.eliminar(planta)
+    carrito.eliminar(planta=planta)
     return redirect("tienda")
     
 def restar_carrito(request,planta_id):
     carrito=Carrito(request)
     planta=Planta.objects.get(id=planta_id)
-    carrito.restar(planta)
+    carrito.restar(planta=planta)
     return redirect("tienda")
 
 

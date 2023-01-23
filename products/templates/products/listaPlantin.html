@@ -1,7 +1,7 @@
 {% extends "products/base.html" %}
 {% block titulo %} Lista de Productos {% endblock titulo %}
 {% block contenido %}
-
+{% load static %}
 
 <section>
   <div>
@@ -34,6 +34,7 @@
     <tr>
       <th>{{ planta.nombre}}</th>
       <th>{{ planta.stock }}</th>
+      
       {% if user.is_staff %}
       <td>
       <a href="{% url 'verplantin' planta.id %}">Ver</a> 

@@ -1,4 +1,5 @@
 {% extends "products/base.html" %}
+{% load static %}
 {% block titulo %} Lista de Productos {% endblock titulo %}
 {% block contenido %}
 
@@ -36,6 +37,7 @@
     <tr>
       <th>{{ planta.nombre}}</th>
       <th>{{ planta.stock }}</th>
+      
       {% if user.is_staff %}
       <td>
       <a href="{% url 'verarbol' planta.id %}">Ver</a> 
@@ -44,7 +46,8 @@
       <a href="{% url 'editarbol' planta.id %}">Editar</a>
       </td>
       <td>
-        <button href="{% url 'eliminaarbol' planta.id %}" type="button" class="btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        
+        <button href="modal" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Eliminar
         </button>
         
@@ -59,11 +62,11 @@
               <div class="modal-body">
                 <h3>Estas seguro que queres eliminar este elemento?</h3>
               </div>
-              <div href="{% url 'eliminaarbol' planta.id %}" class="modal-footer">
-                <button class="btn btn-primary" >Eliminar</button>
-                
-                
-                
+              <div href="#" class="modal-footer">
+                <a href="{% url 'eliminaarbol' planta.id %}" type="submit" class="btn btn-red">Eliminar</a>
+              </div>
+              <div href="#" class="modal-footer">
+                <a href="{% url 'listarbol'%}" type="submit" class="btn btn-primary">Cancelar</a>
               </div>
             </div>
           </div>

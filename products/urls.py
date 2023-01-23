@@ -5,6 +5,7 @@ from products.views import  *
 
 
 
+
 urlpatterns = [
      
      ## Url listado
@@ -35,7 +36,7 @@ urlpatterns = [
      path('Listar-arbol/', ArbolListView.as_view(), name='listarbol'),
      
      ##PRUEBA CARRITO
-     
+     path('Tienda/', tienda, name='tienda'),
      path('Carrito/', carro, name='carro'),
      path('Carrito-agrega/<int:planta_id>/', agregar_carrito, name='addcarrito'),
      path('Carrito-elimina/<int:planta_id>/', eliminar_carrito, name='eliminacarrito'),
@@ -45,3 +46,4 @@ urlpatterns = [
     
      
 ]
+
