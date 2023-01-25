@@ -7,7 +7,10 @@ from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LogoutView, LoginView
-
+from django.views.generic import ListView, DetailView,DeleteView,UpdateView,CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from users.forms import PerfilUpdateForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -35,7 +38,7 @@ def registro(request):
     )
 
 
-def login_view(request):
+#def login_view(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
 
@@ -65,6 +68,20 @@ class CustomLogoutView(LogoutView):
     
     
 class CustomLoginView(LoginView):
-    template_name = 'users/bienvenido.html'
-    next_page =reverse_lazy('products/tienda.html')
+    template_name = 'users/login.html'
+    sucess_url='bienvenida'
+    next_page =reverse_lazy('tienda')
+    
    
+def bienvenida(request):
+    request=request
+    return render(request,template_name='users/bienvenido.html')
+   
+class PerfilupdateView(LoginRequiredMixin,UpdateView):
+    model=User
+    form_class= PerfilUpdateForm  # type: ignore
+    template_name='users/perfil.html'
+    success_url=reverse_lazy('editdatos')
+    def get_object(self, queryset=None):
+        return self.request.user
+    

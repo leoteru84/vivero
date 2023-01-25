@@ -1,5 +1,7 @@
 {% if user.is_authenticated %}
-    <table class="table table-bordered">
+    
+
+    <table class="table table-bordered" style="color: darkgreen;">
         <thead>
 
             <tr>
@@ -21,15 +23,15 @@
                 <td>{{value.precio}}</td>
                 <td>{{value.cantidad}}</td>
                 <td>
-                 <a href="{% url 'addcarrito' value.planta_id %}" class="btn btn-sm btn-success">+</a>
-                 <a href="{% url 'restacarrito' value.planta_id %}" class="btn btn-sm btn-success">-</a>
+                 <a href="{% url 'addcarrito' value.planta_id %}" class="btn btn-sm btn-dark">+</a>
+                 <a href="{% url 'restacarrito' value.planta_id %}" class="btn btn-sm btn-dark">-</a>
                 </td>
               </tr>
              {% endfor %}
             {% else %}
             <tr>
                 <td colspan="3">
-                    <div class="alert alert-danger text-center">
+                    <div class="alert alert-warning text-center">
                         Sin Productos
                     </div>
                 </td>
@@ -45,14 +47,17 @@
         </tbody>
     </table>
     
-    <div>
+    <div class="container-fluid">
+        
         <div class="row text-center">
-            <div><a href="{% url 'limpiacarrito' %}" class="btn btn-danger">Limpiar</a></div>
-            <div><a href="#" class="btn btn-sucess">Guardar</a></div>
+            
+            <div class="container"><a href="{% url 'limpiacarrito' %}" class="btn btn-secondary">Limpiar</a></div>
+            <br>
+            <br>
+            <div class="container"><a href="#" class="btn btn-secondary">Guardar</a></div>
         
 
         </div>
     </div>
-
 
     {% endif %}

@@ -16,14 +16,20 @@ class Carrito:
            self.carrito[id]={
             'planta_id': planta.id,
             'nombre':planta.nombre,
-            'precio':str(planta.precio),
+            'precio': str(planta.precio),
+            'stock':planta.stock,
             'cantidad':1,
                 }
         else:
            for key, value in self.carrito.items():
                 if key == id:
                     value["cantidad"]+= 1
+                    value["precio"]=float(value["precio"])+planta.precio
+                    
+                               
         self.guardar()
+        
+        
                     
     
     
@@ -49,6 +55,7 @@ class Carrito:
         for key, value in self.carrito.items():
                 if key == id:
                    value["cantidad"]=value["cantidad"] - 1
+                   value["precio"]=float(value["precio"])-planta.precio
                    if value["cantidad"] < 1:
                        self.eliminar(planta)
                    self.guardar() 

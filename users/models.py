@@ -7,6 +7,7 @@ class Cliente(models.Model):
     fechaNacimiento=models.DateField(null=True)
     edad=models.IntegerField()
     email=models.EmailField()
+
     
     
     def __str__(self):
