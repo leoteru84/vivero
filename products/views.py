@@ -109,7 +109,7 @@ class ArbolDetailView(DetailView):
 class ArbolDeleteView(LoginRequiredMixin,DeleteView):
     model=Arbol
     success_url=reverse_lazy('listarbol')
-    #template_name='products/arbol_confirm_delete.html'
+    
 
 
 ##Form Frutales

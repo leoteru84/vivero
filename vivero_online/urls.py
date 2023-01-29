@@ -31,10 +31,9 @@ urlpatterns = [
     path('',inicio, name='inicio'),
     path('Usuario/',include('users.urls')),
     path('Productos/',include('products.urls')),
+    path('',include('blog.urls')),
     
     
 ] 
 
-
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

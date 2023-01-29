@@ -1,26 +1,20 @@
 from django import forms 
+from products.models import Planta
 
-class CargaPlantin(forms.Form):
-    nombre=forms.CharField(max_length=200)
-    tipo=forms.CharField(max_length=128)
-    tamaño=forms.CharField(max_length=200)
-    stock=forms.IntegerField(required=True)
-    precio=forms.FloatField(required=True)
-    imagen = forms.ImageField()
+class CargaPlantin(forms.ModelForm):
+    class Meta:
+        model=Planta
+        fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
+    
    
     
 class CargaFrutal(forms.Form):
-    nombre=forms.CharField(max_length=200)
-    tipo=forms.CharField(max_length=128)
-    tamaño=forms.CharField(max_length=200)
-    stock=forms.IntegerField(required=True)
-    precio=forms.FloatField(required=True)
-    imagen = forms.ImageField()
+   class Meta:
+        model=Planta
+        fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
 
 class CargaArbol(forms.Form):
-    nombre=forms.CharField(max_length=200)
-    tipo=forms.CharField(max_length=128)
-    tamaño=forms.CharField(max_length=200)
-    stock=forms.IntegerField(required=True)
-    precio=forms.FloatField(required=True)   
-    imagen = forms.ImageField()
+   class Meta:
+        model=Planta
+        fields = ['nombre', 'tipo', 'tamaño', 'stock','precio','imagen']
+    

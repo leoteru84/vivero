@@ -2,15 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import UpdateView
-from users.models import Cliente
-"""
-class Usuario(forms.Form):
-    nombre=forms.CharField(max_length=128)
-    apellido=forms.CharField(max_length=128)
-    fechaNacimiento=forms.DateField()
-    edad=forms.IntegerField()
-    email=forms.EmailField()"""
-    
+from users.models import Cliente, Avatar
+
     
     
 class RegistroForm(UserCreationForm):
@@ -26,6 +19,13 @@ class PerfilUpdateForm(forms.ModelForm):
         model=User
         fields= ['last_name', 'first_name', 'username', 'email']
         
+
+
+class AvatarFormulario(forms.ModelForm):
+
+    class Meta:
+        model = Avatar
+        fields = ['imagen']        
 
    
    

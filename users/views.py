@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import forms
 from users.models import Cliente
-from users.forms import  RegistroForm
+from users.forms import  RegistroForm, AvatarFormulario
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -70,7 +70,7 @@ class CustomLogoutView(LogoutView):
 class CustomLoginView(LoginView):
     template_name = 'users/login.html'
     sucess_url='bienvenida'
-    next_page =reverse_lazy('tienda')
+    next_page =reverse_lazy('bienvenida')
     
    
 def bienvenida(request):
@@ -81,7 +81,27 @@ class PerfilupdateView(LoginRequiredMixin,UpdateView):
     model=User
     form_class= PerfilUpdateForm  # type: ignore
     template_name='users/perfil.html'
-    success_url=reverse_lazy('editdatos')
+    success_url=reverse_lazy('tienda')
+    
     def get_object(self, queryset=None):
         return self.request.user
     
+
+
+def agregar_avatar(request):
+    if request.method == "POST":
+        formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
+
+        if formulario.is_valid():
+            avatar = formulario.save()
+            avatar.user = request.user
+            avatar.save()
+            url_exitosa = reverse('blog')
+            return redirect(url_exitosa)
+    else:  # GET
+        formulario = AvatarFormulario()
+    return render(
+        request=request,
+        template_name='users/formulario_avatar.html',
+        context={'form': formulario},
+    )

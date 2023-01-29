@@ -9,25 +9,27 @@ class Planta (models.Model):
     tamaño=models.CharField(max_length=200)
     stock=models.IntegerField(null=False)
     precio=models.FloatField(null=True)
-    imagen=models.ImageField(upload_to='PLANTA')
+    imagen=models.ImageField(upload_to='plantas/', null=True, blank=True)
     
     class Meta:
         verbose_name="Planta"
         verbose_name_plural="Plantas"
+       
+        
 
     def __str__(self):
         return f'{self.nombre}'
     
 
 class Plantin(Planta):
-    pass
+    pass   
    
     
 
 
 
 class Arbol(Planta):
-    pass
+    pass    
   
 
 

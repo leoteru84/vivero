@@ -5,9 +5,9 @@
 
 {% block contenido %}
 
-<body>
+
          
-    <div id="contenedor">
+    <div id="contenedor" >
         <div id="central">
             <div id="login">
                 <div class="titulo">
@@ -17,7 +17,7 @@
                     {% csrf_token %}
                     {{form.as_p}}
                     
-                    <button type="submit" title="Ingresar" name="Ingresar">Editar</button>
+                    <button type="submit" title="Ingresar" name="Ingresar" href="{% url 'editdatos'%}">Editar</button>
                 </form>
                 <div class="pie-form">
                      <a href="{% url 'tienda' %}">Volver</a>
@@ -26,8 +26,8 @@
             
         </div>
     </div>
-        
-</body>
+    
+
 
 
 

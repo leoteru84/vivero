@@ -25,8 +25,7 @@ class Carrito:
                 if key == id:
                     value["cantidad"]+= 1
                     value["precio"]=float(value["precio"])+planta.precio
-                    
-                               
+                      
         self.guardar()
         
         

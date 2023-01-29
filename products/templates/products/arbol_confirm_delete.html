@@ -6,21 +6,10 @@
 {% endblock titulo %}
  
 {% block contenido %}
-<body>
-         
-  <div id="contenedor">
-      <div id="central">
-          <div id="login">
-              <div class="titulo; color:red;">
-                  Producto Eliminado
-              </div>
-              <div class="pie-form">
-                <a href="{% url 'Productos' %}">Vuelve a Productos</a>
-              </div>
-          </div>
-          
-      </div>
+<div id="contenedor" style="stylesheet"> 
+  <form method="post"> {% csrf_token %}
+  Pensalo de nuevo!..Lo vas a eliminar??
+  <input type="submit" value="Elimiinar">
+  </form>
   </div>
-      
-</body>
 {% endblock contenido %}

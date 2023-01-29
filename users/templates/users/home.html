@@ -8,21 +8,21 @@ Inicio
 {% block contenido %}
 
   {% if not user.is_authenticated %}
-   <body>
+  
     
     <div id="contenedor">
         <div id="central">
            <div id="login">
                 <div class="titulo">
-                    Bienvenid@ a Vivero Rullo
+                    Bienvenid@ a Vivero Online
                 </div>
                 <div>
-                <a href="{% url 'login'%}">
-                <button type="btn-btn-primary" title="Ingresar" >
+                  <a href="{% url 'login'%}">
+                  <button type="btn-btn-primary" title="Ingresar" >
                     
                     Inicia Sesión
                  
-                </button>
+                  </button>
                  
                 </div>
                
@@ -31,7 +31,7 @@ Inicio
         </div>
     </div>
         
- </body>
+ 
 
  
  {% endif %}

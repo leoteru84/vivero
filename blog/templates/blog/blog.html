@@ -1,0 +1,58 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+ 
+
+{% block contenido %}
+{% if user.is_authenticated %}
+<div class="button">
+<a href="{% url 'crearpost'%}">
+ <button type="btn btn-primary" title="Entrada" >
+      Crear Entrada de blog
+ </button>
+</a>
+</div>
+{% endif %}
+
+
+{% for entrada in object_list  %}
+
+
+<div class="card" style="width: 18rem;">
+  <img src="{{entrada.imagen.url}}" class="card-img-top" width="180" height="180" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{entrada.titulo}}</h5>
+    <p class="card-text">{{entrada.id}}</p>
+    <p class="card-text">{{entrada.autor}}</p>
+    <p>
+      <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"  role="button" aria-expanded="false" aria-controls="collapseExample">
+        Leer mas...
+      </a>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+         {{entrada.contenido}} 
+      </div>
+      
+    </p>
+    
+ </div>
+  <br>
+    
+    {% if user.is_authenticated %}
+     {% if entrada.autor == request.user %}
+       <a href="{% url 'editpost' entrada.id %}">
+        <button type="btn btn-primary" title="Editar" >
+             Editar Entrada de blog
+        </button>
+       </a>
+     {% endif %}
+    {% endif %}
+     
+    
+</div>   
+
+
+{% endfor %}
+ 
+
+{% endblock contenido %}

@@ -1,0 +1,24 @@
+{% extends "products/base.html" %}
+
+{% block contenido %}
+
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+                <h3>Subir tu Avatar</h3>
+                <img src="{{ user.avatar.imagen.url }}" width="180" height="180" alt="...">
+                
+            </div>
+            <form method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+                
+                <button type="submit" title="Ingresar" name="Ingresar">Subir</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+    
+{% endblock contenido %}
