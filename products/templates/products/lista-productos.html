@@ -9,13 +9,12 @@
 
 
 {% block contenido %}
- 
-<body>
+ <body>
    <form action="{% url 'buscaplanta' %}" method="post">
       {% csrf_token %}
       <input type="text" name="nombre">
       <input type="submit" value="Buscar">
-</form>
+  </form>
 <div id="contenedor">
   <div id="central">
       <div id="login">

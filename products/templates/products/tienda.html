@@ -3,7 +3,11 @@
 {% block titulo %} carrito {% endblock titulo %} 
 
 {% block contenido %}
-
+<form action="{% url 'buscaplanta' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="nombre">
+  <input type="submit" value="Buscar">
+</form>
 
  <div id="contenedor">  
     <div class="container" style="stylesheet">
@@ -15,7 +19,7 @@
            <div class="row">
                 {% for p in planta %}
                    
-                <div class="card" style="width: 10rem;">
+                <div class="card" style="width:12rem;">
                   <img src="{{ p.imagen.url }}" class="card-img-top" width="180" height="180"alt="...">
                   <div class="card-body">
                     <h5 class="card-title">{{p.nombre}}</h5>

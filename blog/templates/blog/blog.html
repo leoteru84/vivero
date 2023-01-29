@@ -7,28 +7,31 @@
 {% if user.is_authenticated %}
 <div class="button">
 <a href="{% url 'crearpost'%}">
- <button type="btn btn-primary" title="Entrada" >
+ <button type="btn btn-secondary" title="Entrada" >
       Crear Entrada de blog
  </button>
 </a>
 </div>
 {% endif %}
 
-
+<div class="contenedor" style="float: left">
 {% for entrada in object_list  %}
+  {% if entrada is null %}
+  
+  <h5 >Por ahora no hay entradas de blog</h5>
+  
+  {% endif %}
 
-
-<div class="card" style="width: 18rem;">
+<div class="contenedor" style="width:22rem;">
   <img src="{{entrada.imagen.url}}" class="card-img-top" width="180" height="180" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{entrada.titulo}}</h5>
-    <p class="card-text">{{entrada.id}}</p>
-    <p class="card-text">{{entrada.autor}}</p>
-    <p>
-      <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample"  role="button" aria-expanded="false" aria-controls="collapseExample">
+  <div class="card-body" style="background-color:white;">
+    <h5 class="card-title"  style="background-color:white;">{{entrada.titulo}}</h5>
+    <p class="card-text" style="background-color:white;">{{entrada.autor}}</p>
+      <!--Aqui en databstarget agrego entada id para independizar el elemento y lo enlazo con el id del dic contenido-->
+      <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample{{entrada.id}}"  role="button" aria-expanded="false" aria-controls="collapseExample">
         Leer mas...
       </a>
-      <div class="collapse" id="collapseExample">
+      <div class="collapse" id="collapseExample{{entrada.id}}">
         <div class="card card-body">
          {{entrada.contenido}} 
       </div>
@@ -53,6 +56,6 @@
 
 
 {% endfor %}
- 
+</div>
 
 {% endblock contenido %}

@@ -32,6 +32,7 @@
     </tr>
     {% for planta in object_list %}
     <tr>
+      
       <th>{{ planta.nombre}}</th>
       <th>{{ planta.stock }}</th>
       
@@ -48,10 +49,12 @@
       {% endif %}
       
     
-    {% if user.is_authenticated %}
-    <th>{{ planta.precio }}</th>
-     <td>
-       <a class="btn btn-dark" href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
+      {% if user.is_authenticated %}
+      <th>{{ planta.precio }}</th>
+      
+    
+      <td>
+        <a  class="btn btn-dark"href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
       </td>
       {% endif %}
     </tr>

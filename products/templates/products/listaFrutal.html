@@ -56,6 +56,14 @@
         <a class="btn btn-dark" href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
       </td>
       {% endif %}
+      {% if user.is_authenticated %}
+      <th>{{ planta.precio }}</th>
+      
+    
+      <td>
+        <a  class="btn btn-dark"href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
+      </td>
+      {% endif %}
     </tr>
     {% endfor %}
     <div class="pie-form">
