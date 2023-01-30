@@ -48,8 +48,9 @@ class Entradaedit(LoginRequiredMixin,UpdateView):
 
 
 class Entradadelete(LoginRequiredMixin,DeleteView):
-    pass
-
+    model=Entrada
+    success_url=reverse_lazy('blog')
+    
 
     
     

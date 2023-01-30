@@ -14,13 +14,13 @@
 </div>
 {% endif %}
 
-<div class="contenedor" style="float: left">
+<div class="contenedor" style="float:left">
 {% for entrada in object_list  %}
-  {% if entrada is null %}
+  {% if object_list == null %}
   
-  <h5 >Por ahora no hay entradas de blog</h5>
+   <h5 >Por ahora no hay entradas de blog</h5>
   
-  {% endif %}
+  {% else %}
 
 <div class="contenedor" style="width:22rem;">
   <img src="{{entrada.imagen.url}}" class="card-img-top" width="180" height="180" alt="...">
@@ -41,11 +41,16 @@
  </div>
   <br>
     
-    {% if user.is_authenticated %}
-     {% if entrada.autor == request.user %}
+    {% if user.is_authenticated  %}
+     {% if entrada.autor == request.user or user.is_staff %}
        <a href="{% url 'editpost' entrada.id %}">
         <button type="btn btn-primary" title="Editar" >
              Editar Entrada de blog
+        </button>
+       </a>
+       <a href="{% url 'deletepost' entrada.id %}">
+        <button type="btn btn-primary" title="Editar" >
+             Eliminar Entrada
         </button>
        </a>
      {% endif %}
@@ -53,7 +58,7 @@
      
     
 </div>   
-
+{% endif %}
 
 {% endfor %}
 </div>

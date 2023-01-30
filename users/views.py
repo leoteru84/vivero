@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import forms
 from users.models import Cliente
-from users.forms import  RegistroForm, AvatarFormulario
+from users.forms import  RegistroForm, AvatarFormulario, ContactoForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
@@ -11,6 +11,7 @@ from django.views.generic import ListView, DetailView,DeleteView,UpdateView,Crea
 from django.contrib.auth.mixins import LoginRequiredMixin
 from users.forms import PerfilUpdateForm
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -105,3 +106,31 @@ def agregar_avatar(request):
         template_name='users/formulario_avatar.html',
         context={'form': formulario},
     )
+
+
+def contacto (request):
+    form=ContactoForm()
+    if request == 'POST':
+        form=ContactoForm(data=request.POST)
+        if form.is_valid:
+            nombre=request.POST.get('nombre')
+            email=request.POST.get('email')
+            contenido=request.POST.get('contenido')
+            email=EmailMessage(
+                "Mensaje de vivero online",
+                "El usuario{}, Email: {}, le ha enviado un mensaje:\n {}".format(nombre,email,contenido),
+                               )
+            try:
+                email.send()
+                return redirect('/Contacto/?ok')
+            except:
+                return redirect('/Contacto/?nok')
+
+    
+    return render(request, "users/contacto.html",{'form':form})
+    
+    
+
+
+def acerca (request):
+    return render(request, 'users/acerca.html')

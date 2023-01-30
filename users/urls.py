@@ -10,7 +10,9 @@ urlpatterns = [
     path('inicio/', CustomLoginView.as_view() , name="login"),
     path('Edit/', PerfilupdateView.as_view() , name="editdatos"),
     path('Agregar-avatar/',agregar_avatar, name="avatar"),
+    path('Contacto/',contacto, name="contacto"),
+    path('Acerca de nosotr@s/',acerca, name="acerca"),
     
                
 ]
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

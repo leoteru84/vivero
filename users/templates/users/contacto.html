@@ -1,0 +1,38 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+               Contacto
+            {% if "ok" in request.GET %}
+              <p style="color:black;">Su consulta se ha enviado correctamente</p>
+              {% else %}
+              <p style="color:black;">Error al enviar su consulta</p>
+            {% endif %}
+            </div>
+            
+             <form method='post' enctype='multipart/form-data'>
+                {%csrf_token%}
+                {{form.as_table}}
+
+               <input type='submit' value='Enviar'>
+            <div class="pie-form">
+                <a href="{% url 'inicio' %}">Inicio</a>
+            </div>
+
+
+              </form>
+              
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock contenido %}

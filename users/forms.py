@@ -26,6 +26,13 @@ class AvatarFormulario(forms.ModelForm):
     class Meta:
         model = Avatar
         fields = ['imagen']        
+        
+        
+        
+class ContactoForm(forms.Form):
+    nombre=forms.CharField(label='Nombre',required=True)
+    email=forms.CharField(label='E-mail',required=True)
+    contenido=forms.CharField(widget=forms.Textarea)
 
    
    
