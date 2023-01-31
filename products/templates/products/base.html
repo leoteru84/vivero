@@ -31,16 +31,16 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
           {% if user.is_staff%}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'Productos' %}">Productos</a>
-          </li>
+           <li class="nav-item">
+             <a class="nav-link" href="{% url 'Productos' %}">Productos</a>
+           </li>
           {% endif %}
-          <li class="nav-item">
-            <a class=" nav-link" style="color:red" href="{% url 'tienda' %}">Tienda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="color:green" href="{% url 'blog' %}">Blog</a>
-          </li>
+           <li class="nav-item">
+             <a class=" nav-link" style="color:red" href="{% url 'tienda' %}">Tienda</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" style="color:green" href="{% url 'blog' %}">Blog</a>
+           </li>
           {% if user.is_authenticated %}
            
               <!--###########...dropdown del PERFIL...............#########################################################################-->
@@ -57,39 +57,22 @@
               </ul>
             </div>
             
-             <!--###########...dropdown del PERFIL...............#########################################################################-->
-             
-             
-             <!--div class="dropdown" align="right">
-              <button class="btn btn-warning dropdown-toggle" if="dropd1"type="button" data-bs-toggle="dropdown" aria-expanded="true">
-                Carrito
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="dropd1" aria-expanded="true">
-                <li class="nav-item" aria-expanded="true">              
-                  {% include 'products/carro/widget.html' %}
-                 </li>
-              </ul>
-            </div-->
+                          
              
              
              
              
              
-             
-             
-             <!--li class="nav-item">              
-              {% include 'products/carro/widget.html' %}
-             </li-->
-            
+
              {% endif %}
             
             
             
              <li class="nav-item">
-             <a class="nav-link" href="{% url 'contacto'%}">Contacto</a>
+             <a class="nav-link" style="color:black" href="{% url 'contacto'%}">Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Acerca de Nosotr@s</a>
+              <a class="nav-link" style="color:black" href="{% url 'acerca'%}">Acerca de Nosotr@s</a>
             </li>
           
         </ul>

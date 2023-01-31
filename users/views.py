@@ -116,6 +116,8 @@ def contacto (request):
             nombre=request.POST.get('nombre')
             email=request.POST.get('email')
             contenido=request.POST.get('contenido')
+            
+            
             email=EmailMessage(
                 "Mensaje de vivero online",
                 "El usuario{}, Email: {}, le ha enviado un mensaje:\n {}".format(nombre,email,contenido),

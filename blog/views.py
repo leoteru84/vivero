@@ -31,9 +31,14 @@ class Entradalist(ListView):
 
 class Entradacreate(LoginRequiredMixin,CreateView):
     model=Entrada
+    
     template_name='blog/blog_form.html'
-    fields=['titulo','subtitulo','contenido','imagen','autor']
+    fields=['titulo','subtitulo','contenido','imagen']
     success_url=reverse_lazy('inicio')
+    
+    def form_valid(self, form):
+        form.instance.autor = self.request.user
+        return super(Entradacreate, self).form_valid(form)
     
     
     

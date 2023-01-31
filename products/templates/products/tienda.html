@@ -16,10 +16,10 @@
         {% include 'products/carro/widget.html' %}
        </div> 
         {% endif %}
-           <div class="row">
+           <div >
                 {% for p in planta %}
                    
-                <div class="card" style="width:12rem;">
+                <div class="card" style="width:12rem; float:left">
                   <img src="{{ p.imagen.url }}" class="card-img-top" width="180" height="180"alt="...">
                   <div class="card-body">
                     <h5 class="card-title">{{p.nombre}}</h5>
@@ -35,7 +35,10 @@
                   </div>
                 </div>
 
-                
+                {% empty%}
+                <div id="login">
+                  <h1 style="text; align:center">No hay Productos en la tienda</h1>
+                </div>
                    
                 {% endfor %}
 

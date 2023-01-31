@@ -20,5 +20,5 @@ class Entrada(models.Model):
       return self.titulo
 
 
-    
+
 
