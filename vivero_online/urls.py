@@ -29,7 +29,7 @@ from users.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('Inicio',inicio, name='inicio'),
+    path('',inicio, name='inicio'),
     path('Usuario/',include('users.urls')),
     path('Productos/',include('products.urls')),
     path('Blog/',include('blog.urls')),

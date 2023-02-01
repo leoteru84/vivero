@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django import forms
-from users.models import Cliente
+from users.models import Cliente, Avatar
 from users.forms import  RegistroForm, AvatarFormulario, ContactoForm
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
@@ -12,6 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from users.forms import PerfilUpdateForm
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import login_required
+from django.db import IntegrityError
 
 # Create your views here.
 
@@ -38,8 +40,8 @@ def registro(request):
         context={'formulario': formulario},
     )
 
-
-#def login_view(request):
+"""
+def login_view(request):
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
 
@@ -59,7 +61,7 @@ def registro(request):
         request=request,
         template_name='users/login.html',
         context={'form': form},
-    )
+    )"""
     
     
 class CustomLogoutView(LogoutView):
@@ -92,20 +94,37 @@ class PerfilupdateView(LoginRequiredMixin,UpdateView):
 def agregar_avatar(request):
     if request.method == "POST":
         formulario = AvatarFormulario(request.POST, request.FILES) # Aquí me llega toda la info del formulario html
-
+         
         if formulario.is_valid():
             avatar = formulario.save()
-            avatar.user = request.user
-            avatar.save()
+            avatar.user= request.user
+            try:
+              avatar.save()
+            except IntegrityError:
+                 pass
             url_exitosa = reverse('blog')
             return redirect(url_exitosa)
     else:  # GET
-        formulario = AvatarFormulario()
+            formulario = AvatarFormulario()
     return render(
         request=request,
         template_name='users/formulario_avatar.html',
         context={'form': formulario},
     )
+   
+    
+
+    
+    
+    
+
+
+
+
+
+
+
+
 
 
 def contacto (request):
