@@ -4,75 +4,65 @@
 {% block contenido %}
 
 <section>
-<div>
-  {% if user.is_staff %} 
-<h1 style='color:#198754'>Lista de Frutales </h1>
+  <div>
+    {% if user.is_staff %}
+    <h1 style='color:#198754'>Lista de Frutales </h1>
 
-<a href="{% url 'createfrutal'%}">
-  <button type="btn-btn-primary" title="Frutales" >
-    Carga Frutales
-  </button>
-  <br>
-<br>
-</a>
-{% endif %}
-<form action="{% url 'buscafrutal' %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="nombre">
-  <input type="submit" value="Buscar">
-</form>
-<br>
+    <a href="{% url 'createfrutal'%}">
+      <button type="btn-btn-primary" title="Frutales">
+        Carga Frutales
+      </button>
+      <br>
+      <br>
+    </a>
+    {% endif %}
+    <form action="{% url 'buscafrutal' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="nombre">
+      <input type="submit" value="Buscar">
+    </form>
+    <br>
 
-<table class="table" >
-  <tbody >
-    <tr>
-      <th>Nombre</th>
-      <th>Cantidad</th>
-      <th>Precio</th>
-     
-    </tr>
-    {% for planta in object_list %}
-     <tr>
-      <th>{{ planta.nombre}}</th>
-      <th>{{ planta.stock }}</th>
-      
-      {% if user.is_staff %}
-      <td>
-      <a href="{% url 'verfrutal' planta.id %}">Ver</a> 
-      </td>
-      <td>
-        <a href="{% url 'editfrutal' planta.id %}">Editar</a>
-        </td>
-        <td>
-          <a href="{% url 'eliminafrutal' planta.id %}">Eliminar</a>
-        </td>
-      {% endif %}
-      
-     
-     
-      {% if user.is_authenticated %}
-      <th>{{ planta.precio }}</th>
-      <td>
-        <a class="btn btn-dark" href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
-      </td>
-      {% endif %}
-      {% if user.is_authenticated %}
-      <th>{{ planta.precio }}</th>
-      
-    
-      <td>
-        <a  class="btn btn-dark"href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
-      </td>
-      {% endif %}
-    </tr>
-    {% endfor %}
-    <div class="pie-form">
-     <a href="{% url 'Productos' %}">Volver al Listado</a>
-    </div>
-    
-  </tbody>
- </table>
-</div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>Nombre</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+
+        </tr>
+        {% for planta in object_list %}
+        <tr>
+          <th>{{ planta.nombre}}</th>
+          <th>{{ planta.stock }}</th>
+
+          {% if user.is_staff %}
+          <td>
+            <a href="{% url 'verfrutal' planta.id %}">Ver</a>
+          </td>
+          <td>
+            <a href="{% url 'editfrutal' planta.id %}">Editar</a>
+          </td>
+          <td>
+            <a href="{% url 'eliminafrutal' planta.id %}">Eliminar</a>
+          </td>
+          {% endif %}
+          {% if user.is_authenticated %}
+          <th>{{ planta.precio }}</th>
+
+          <td>
+            <a class="btn btn-dark" href="{% url 'addcarrito' planta.id %}">Agregar al carrito</a>
+          </td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+        <div class="pie-form">
+          <a href="{% url 'Productos' %}">Volver al Listado</a>
+        </div>
+
+      </tbody>
+    </table>
+  </div>
 </section>
 
   

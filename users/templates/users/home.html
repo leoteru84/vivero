@@ -4,35 +4,30 @@
 Inicio
 {% endblock titulo %}
 
-
 {% block contenido %}
 
-  {% if not user.is_authenticated %}
-  
-    
-    <div id="contenedor">
-        <div id="central">
-           <div id="login">
-                <div class="titulo">
-                    Bienvenid@ a Vivero Online
-                </div>
-                <div>
-                  <a href="{% url 'login'%}">
-                  <button type="btn-btn-primary" title="Ingresar" >
-                    
-                    Inicia Sesión
-                 
-                  </button>
-                 
-                </div>
-               
-            </div>
-            
-        </div>
-    </div>
-        
- 
+{% if not user.is_authenticated %}
 
- 
- {% endif %}
+<div id="contenedor">
+  <div id="central">
+    <div id="login">
+      <div class="titulo">
+        Bienvenid@ a Vivero Online
+      </div>
+      <div>
+        <a href="{% url 'login'%}">
+          <button type="btn-btn-primary" title="Ingresar">
+
+            Inicia Sesión
+
+          </button>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+{% endif %}
 {% endblock contenido %}

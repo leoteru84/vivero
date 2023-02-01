@@ -1,4 +1,5 @@
 {
     "python.analysis.typeCheckingMode": "basic",
-    "editor.cursorStyle": "line"
+    "editor.cursorStyle": "line",
+    "diffEditor.codeLens": false
 }

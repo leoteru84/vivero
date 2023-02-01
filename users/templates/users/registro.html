@@ -1,35 +1,32 @@
 {% extends "products/base.html" %}
 {% load  static %}
- 
- {% block titulo %}
-     Registro
- {% endblock titulo %}
- 
- {% block contenido %}
 
- <body>
-         
+{% block titulo %}
+Registro
+{% endblock titulo %}
+
+{% block contenido %}
+
+<body>
+
     <div id="contenedor">
         <div id="central">
             <div id="login">
                 <div class="titulo">
                     Registro de Usuario
                 </div>
- <form  method='post'>
-    {%csrf_token%}
-    {{formulario.as_p}}
-   <button type="submit" title="Registrar" name="Ingresar">Registrar</button>
+                <form method='post'>
+                    {%csrf_token%}
+                    {{formulario.as_p}}
+                    <button type="submit" title="Registrar" name="Ingresar">Registrar</button>
 
+                </form>
+                <div class="pie-form">
+                    <a href="{% url 'login' %}">Volver</a>
+                </div>
+            </div>
 
- </form>
- <div class="pie-form">
-    <a href="{% url 'login' %}">Volver</a>
-</div>
-</div>
+        </div>
+    </div>
 
-</div>
-</div>
-
-
-
- {% endblock contenido %}
+    {% endblock contenido %}

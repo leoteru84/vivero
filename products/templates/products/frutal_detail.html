@@ -18,7 +18,11 @@
   <b>stock:</b> {{object.stock}}
   <b>Precio:</b> {{object.precio}}
   <br>
-  <img src="{{ object.imagen.url }}">
+  {% if object.imagen %}
+  <img src="{{object.imagen.url}}">
+  {% else %}
+  <img src="#">
+  {% endif %}
 </span>
 {% endif %}
 <br><br>

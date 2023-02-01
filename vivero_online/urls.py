@@ -21,6 +21,7 @@ from django.conf import settings
 from products.views import tienda
 from django.conf import settings
 from django.conf.urls.static import static
+from users.views import *
 
 
 
@@ -28,10 +29,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',inicio, name='inicio'),
+    path('Inicio',inicio, name='inicio'),
     path('Usuario/',include('users.urls')),
     path('Productos/',include('products.urls')),
-    path('',include('blog.urls')),
+    path('Blog/',include('blog.urls')),
+    path('Contacto/',contacto, name="contacto"),
+    path('Acerca_de_nosotr@s/',acerca, name="acerca"),
+    
+    
     
     
 ] 

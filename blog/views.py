@@ -34,7 +34,7 @@ class Entradacreate(LoginRequiredMixin,CreateView):
     
     template_name='blog/blog_form.html'
     fields=['titulo','subtitulo','contenido','imagen']
-    success_url=reverse_lazy('inicio')
+    success_url=reverse_lazy('blog')
     
     def form_valid(self, form):
         form.instance.autor = self.request.user

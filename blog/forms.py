@@ -9,8 +9,4 @@ class EntradaForm(forms.ModelForm):
     class Meta:
         model=Entrada
         fields= ['titulo','subtitulo','contenido','imagen','autor']
-        widgets = { 
-                   'contenido': Textarea(attrs={'size':20}), 
-                   
-                   }
-    
+      
