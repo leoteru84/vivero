@@ -1,28 +1,29 @@
 {% extends "products/base.html" %}
 {% load  static %}
- 
+
 {% block titulo %}
-    Inicio
+Inicio
 {% endblock titulo %}
- 
+
 {% block contenido %}
 
-    <div id="contenedor">
-        <div id="central">
-            <div id="login">
-                <div class="titulo">
-                   <p> Hola,{{user.first_name}}</p>
-                   <img src="{{ user.avatar.imagen.url }}" class="card-img-top" width="180" height="180" alt="...">
-                   👋 Has iniciado sesión
-                </div>
-           
-             </div>
-            
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+                <p> Hola,{{user.first_name}}</p>
+                {% if user.avatar.imagen %}
+                <img src="{{ user.avatar.imagen.url }}" class="card-img-top" width="180" height="180" alt="...">
+                👋 Has iniciado sesión
+                {% else %}
+                <img src="#" class="card-img-top" width="180" height="180" alt="...">
+                👋 Has iniciado sesión
+                {% endif %}
+            </div>
+
         </div>
+
     </div>
-        
- 
-
-
+</div>
 
 {% endblock contenido %}

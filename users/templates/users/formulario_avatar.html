@@ -7,8 +7,11 @@
         <div id="login">
             <div class="titulo">
                 <h3>Subir tu Avatar</h3>
+                {% if user.avatar.imagen %}
                 <img src="{{ user.avatar.imagen.url }}" width="180" height="180" alt="...">
-
+                {% else %}
+                <img src="#" width="180" height="180" alt="...">
+                {% endif %}
             </div>
             {% if request.user %}
             <form method='post' enctype="multipart/form-data">

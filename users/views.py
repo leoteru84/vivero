@@ -111,8 +111,7 @@ def agregar_avatar(request):
         template_name='users/formulario_avatar.html',
         context={'form': formulario},
     )
-   
-    
+
 
     
     

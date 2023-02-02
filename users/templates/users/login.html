@@ -1,40 +1,31 @@
 {% extends "products/base.html" %}
 {% load  static %}
- 
- {% block titulo %}
-     Login
- {% endblock titulo %}
 
- {% block contenido %}
+{% block titulo %}
+Login
+{% endblock titulo %}
 
+{% block contenido %}
 
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+                Inicie Sesión
+            </div>
+            <form method='post'>
+                {% csrf_token %}
+                {{form.as_p}}
 
+                <button type="submit" title="Ingresar" name="Ingresar">Login</button>
+            </form>
+            <div class="pie-form">
+                <a href="#">¿Perdiste tu contraseña?</a>
+                <a href="{% url 'registro' %}">¿No tienes Cuenta? Registrate</a>
+            </div>
+        </div>
 
-    
-         
-         <div id="contenedor">
-             <div id="central">
-                 <div id="login" >
-                     <div class="titulo">
-                         Inicie Sesión
-                     </div>
-                     <form method='post'>
-                         {% csrf_token %}
-                         {{form.as_p}}
-                         
-                         <button type="submit" title="Ingresar" name="Ingresar">Login</button>
-                     </form>
-                     <div class="pie-form">
-                         <a href="#">¿Perdiste tu contraseña?</a>
-                         <a href="{% url 'registro' %}">¿No tienes Cuenta? Registrate</a>
-                     </div>
-                 </div>
-                 
-             </div>
-         </div>
-             
-    
+    </div>
+</div>
 
-
- {% endblock contenido %}
-
+{% endblock contenido %}
