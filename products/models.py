@@ -3,33 +3,39 @@ from django.db import models
 # Create your models here.
 
 
-class Plantin(models.Model):
+class Planta (models.Model):
     nombre=models.CharField(max_length=200)
     tipo=models.CharField(max_length=128)
     tamaño=models.CharField(max_length=200)
-    stock=models.IntegerField()
-   
+    stock=models.IntegerField(null=False)
+    precio=models.FloatField(null=True)
+    imagen=models.ImageField(upload_to='plantas/', null=True, blank=True)
     
+    class Meta:
+        verbose_name="Planta"
+        verbose_name_plural="Plantas"
+       
+        
+
     def __str__(self):
         return f'{self.nombre}'
     
 
-
-
-class Arbol(models.Model):
-    nombre=models.CharField(max_length=200)
-    tipo=models.CharField(max_length=128)
-    tamaño=models.CharField(max_length=200)
-    stock=models.IntegerField()
+class Plantin(Planta):
+    pass   
    
-    def __str__(self):
-        return f'{self.nombre}'
+    
 
-class Frutal(models.Model):
-    nombre=models.CharField(max_length=200)
-    tipo=models.CharField(max_length=128)
-    tamaño=models.CharField(max_length=200)
-    stock=models.IntegerField()
+
+
+class Arbol(Planta):
+    pass    
   
-    def __str__(self):
-        return f'{self.nombre}'
+
+
+
+class Frutal(Planta):
+    pass
+
+
+

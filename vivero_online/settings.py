@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'products',
     'users',
+    'blog',
+    
     
 ]
 
@@ -51,6 +53,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    
+    
 ]
 
 ROOT_URLCONF = 'vivero_online.urls'
@@ -66,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'products.context_processor.total_carrito',
+                
             ],
         },
     },
@@ -120,16 +127,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+MEDIA_URL='/media/'
+MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
 STATICFILES_DIRS=[
     BASE_DIR / 'static',
-]
+    ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_USE_TLS=True
+EMAIL_PORT=587
+EMAIL_HOST_USER=''
+EMAIL_HOST_PASSWORD=''

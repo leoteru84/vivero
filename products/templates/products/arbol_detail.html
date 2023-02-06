@@ -1,0 +1,31 @@
+{% extends "products/base.html" %}
+{% load  static %}
+
+{% block titulo %}
+Info Arbol
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h4>{{object.nombre}}</h4>
+<span>
+  <b>Tamaño:</b> {{object.tamaño}}
+</span>
+<br>
+{% if object.stock %}
+<span>
+  <b>stock:</b> {{object.stock}}
+  <b>Precio:</b> {{object.precio}}
+  <br>
+  {% if object.imagen %}
+  <img src="{{object.imagen.url}}">
+  {% else %}
+  <img src="#">
+  {% endif %}
+</span>
+{% endif %}
+<br><br>
+
+<a href="{% url 'listarbol' %}">Volver a la lista</a>
+
+{% endblock contenido %}

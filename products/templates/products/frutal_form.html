@@ -2,11 +2,10 @@
 {% load  static %}
  
  {% block titulo %}
-     Carga Plantines
+     Formulario Frutales
  {% endblock titulo %}
  
  {% block contenido %}
- 
 
 
  
@@ -16,20 +15,16 @@
         <div id="central">
             <div id="login">
                 <div class="titulo">
-                   Carga de Plantines
+                   Formulario Frutales
                 </div>
-                 <form action="{% url 'plantin' %}" method='post'>
+                 <form method='post' enctype='multipart/form-data'>
                     {%csrf_token%}
-                   <p> Nombre:</p>
-                   <input type='text' name='nombre'>
-                   <p> Tipo:</p>
-                   <input type='text' name='tipo'>
-                   <p> Tamaño:</p>
-                   <input type='text' name='tamaño'>
-                   <p> Stock:</p>
-                   <input type='number' name='stock'>
+                    {{form.as_p}}
  
                    <input type='submit' value='Enviar'>
+                <div class="pie-form">
+                    <a href="{% url 'listfrutal' %}">Volver al Listado</a>
+                </div>
 
 
                   </form>

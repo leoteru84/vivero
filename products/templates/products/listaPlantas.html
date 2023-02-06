@@ -1,0 +1,27 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block titulo %} Busqueda{% endblock titulo %}
+
+{% block contenido %}
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+
+    </tr>
+
+    </tr>
+    {% for planta in plantas %}
+    <tr>
+      <th>{{ planta.nombre}}</th>
+      <th>{{ planta.stock }}</th>
+
+    </tr>
+    {% endfor %}
+
+    {% endblock contenido %}
+
+ 
+

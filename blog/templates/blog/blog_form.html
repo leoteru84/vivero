@@ -1,0 +1,31 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block titulo %}Blog{% endblock titulo %}
+
+{% block contenido %}
+
+<div id="contenedor">
+    <div id="central">
+
+        <div>
+            <h1 class="modal-title">Entrada</h1>
+        </div>
+
+        <form method='post' enctype='multipart/form-data'>
+
+            {%csrf_token%}
+            {{form.as_table}}
+
+            <input class="btn btn-success" type='submit' value='Enviar'>
+            <div class="pie-form">
+                <a href="{% url 'blog' %}">Ir al Blog</a>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+</div>
+<br>
+
+{% endblock contenido %}

@@ -1,0 +1,34 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+                Editar Datos
+            </div>
+            <form method='post'>
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <button type="submit" title="Ingresar" name="Ingresar" href="{% url 'editdatos'%}">Editar</button>
+            </form>
+            <div class="pie-form">
+                <a href="{% url 'tienda' %}">Volver</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock contenido %}
+
+
+
+
+
+
+
+

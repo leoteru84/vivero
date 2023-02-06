@@ -1,0 +1,97 @@
+{% extends "products/base.html" %}
+{% load static %}
+{% block titulo %} Tienda {% endblock titulo %} 
+
+{% block contenido %}
+<form action="{% url 'buscaplanta' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="nombre">
+  <input type="submit" value="Buscar">
+</form>
+
+ <div id="contenedor">  
+    <div class="container" style="stylesheet">
+      {% if user.is_authenticated%}
+      <div id="carrito" style="float:right;">
+        {% include 'products/carro/widget.html' %}
+       </div> 
+        {% endif %}
+           <div >
+                {% for p in planta %}
+                <div class="card" style="width:12rem; float:left">
+                {% if p.imagen %}  
+                <img src="{{ p.imagen.url }}" class="card-img-top" width="180" height="180"alt="...">
+                {% else %}
+                <img
+                <div class="card" style="width:12rem; float:left">
+                  <img  class="card-img-top" width="180" height="180"alt="...">
+            {% endif %}
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  <div class="card-body">
+                    <h5 class="card-title">{{p.nombre}}</h5>
+                    <h6 class="card-text">Stock:{{p.stock}}</h6>
+
+                   
+
+                   
+                  {% if user.is_authenticated %}
+                    <a href="{% url 'addcarrito' p.id %}" class="btn btn-primary">Agregar al Carrito</a>
+                     
+                  {% endif %}
+                  </div>
+                </div>
+
+                {% empty%}
+                <div id="login">
+                  <h1 style="text; align:center">No hay productos en la tienda</h1>
+                  {% if not user.is_authenticated %}
+                  <a href="{% url 'login' %}">
+                    <button type="btn btn-primary" title="Editar" class="btn btn-warning">
+                      Iniciar Sesión
+                    </button>
+                  </a>
+                  {% endif %}
+                </div>
+                 
+                {% endfor %}
+
+                
+                
+                  
+            </div>
+            
+
+         </div>
+    </div>
+ </div>
+
+
+{% endblock contenido %}
+
+
+
+
+
+
+
+
+
+
+

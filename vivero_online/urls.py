@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from users.views import  inicio
+from django.conf.urls.static import static
+from django.conf import settings
+from products.views import tienda
+from django.conf import settings
+from django.conf.urls.static import static
+from users.views import *
 
 
 
@@ -26,10 +32,13 @@ urlpatterns = [
     path('',inicio, name='inicio'),
     path('Usuario/',include('users.urls')),
     path('Productos/',include('products.urls')),
+    path('Blog/',include('blog.urls')),
+    path('Contacto/',contacto, name="contacto"),
+    path('Acerca_de_nosotr@s/',acerca, name="acerca"),
     
     
+    
+    
+] 
 
-    
-    
-    
-]
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

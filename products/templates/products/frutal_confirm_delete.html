@@ -1,0 +1,13 @@
+{% extends "products/base.html" %}
+{% load  static %}
+ 
+{% block titulo %}Delete{% endblock titulo %}
+ 
+{% block contenido %}
+<div contenedor> 
+<form method="post"> {% csrf_token %}
+Pensalo de nuevo!..Lo vas a eliminar??
+<input type="submit" value="Elimiinar">
+</form>
+</div>
+{% endblock contenido %}

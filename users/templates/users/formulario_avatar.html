@@ -1,0 +1,30 @@
+{% extends "products/base.html" %}
+
+{% block contenido %}
+
+<div id="contenedor">
+    <div id="central">
+        <div id="login">
+            <div class="titulo">
+                <h3>Subir tu Avatar</h3>
+                {% if user.avatar.imagen %}
+                <img src="{{ user.avatar.imagen.url }}" width="180" height="180" alt="...">
+                {% else %}
+                <img src="#" width="180" height="180" alt="...">
+                {% endif %}
+            </div>
+            {% if request.user %}
+            <form method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <button type="submit" title="Ingresar" name="Ingresar">Subir</button>
+                
+            </form>
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock contenido %}

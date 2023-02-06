@@ -1,0 +1,36 @@
+{% extends "products/base.html" %}
+{% load  static %}
+
+{% block titulo %}
+Formulario Plantines
+{% endblock titulo %}
+
+{% block contenido %}
+
+<body>
+
+    <div id="contenedor">
+        <div id="central">
+            <div id="login">
+                <div class="titulo">
+                    Formulario Plantines
+                </div>
+                <form method='post' enctype='multipart/form-data'>
+                    {%csrf_token%}
+                    {{form.as_p}}
+
+                    <input type='submit' value='Enviar'>
+                    <div class="pie-form">
+                        <a href="{% url 'listplantin' %}">Volver al Listado</a>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+{% endblock contenido %}

@@ -1,0 +1,83 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block titulo %}Blog{% endblock titulo %}
+
+{% block contenido %}
+{% if user.is_authenticated %}
+<div class="button">
+  <a href="{% url 'crearpost'%}">
+    <button type="button" title="Entrada" class="btn btn-warning">
+      Crear Entrada de blog
+    </button>
+  </a>
+</div>
+<br>
+<br>
+{% endif %}
+
+{% for entrada in object_list  %}
+
+<div class="card" style="width:25rem; background-color:white;float:left;">
+  {% if entrada.imagen %}  
+  <img src="{{entrada.imagen.url}}" style="width:25rem;" width="180" height="180" alt="...">
+  {% else %}
+  <img src="#" style="width:25rem;" width="180" height="180" alt="...">
+  {% endif %}
+  
+  <div class="card-body" style="background-color:white;">
+    <h5 class="card-text" style="background-color:white;width:25rem;">{{entrada.titulo}}</h5>
+    <p class="card-text" style="background-color:white;width:25rem;">Autor:{{entrada.autor}}</p>
+    <p class="card-text" style="background-color:white;width:25rem;">Creado:{{entrada.creado}}</p>
+
+    <!--Aqui en databstarget agrego entada id para independizar el elemento y lo enlazo con el id del dic contenido-->
+
+    <a class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseExample{{entrada.id}}" role="button"
+      aria-expanded="false" aria-controls="collapseExample">
+      Leer mas...
+    </a>
+
+    <div class="collapse" id="collapseExample{{entrada.id}}">
+      <div class="card card-body">
+        {{entrada.contenido}}
+      </div>
+    </div>
+
+    </p>
+
+    {% if user.is_authenticated  %}
+
+    {% if entrada.autor == request.user or user.is_staff %}
+
+    <a href="{% url 'editpost' entrada.id %}">
+      <button type="btn btn-primary" title="Editar" class="btn btn-warning">
+        Editar Entrada de blog
+      </button>
+    </a>
+    <a href="{% url 'deletepost' entrada.id %}">
+      <button type="btn btn-primary" title="Editar" class="btn btn-danger">
+        Eliminar Entrada
+      </button>
+    </a>
+    {% endif %}
+
+    {% endif %}
+
+  </div>
+</div>
+
+{% empty %}
+
+<div id="login">
+  <h1 style="text; align:center">Por ahora no hay entradas de blog</h1>
+  {% if not user.is_authenticated %}
+  <a href="{% url 'login' %}">
+    <button type="btn btn-primary" title="Editar" class="btn btn-warning">
+      Iniciar Sesión
+    </button>
+  </a>
+  {% endif %}
+</div>
+
+{% endfor %}
+
+{% endblock contenido %}

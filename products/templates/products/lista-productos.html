@@ -4,37 +4,39 @@
 
 {% block titulo %} Lista de Productos {% endblock titulo %}
 
-  
-
-
-
 {% block contenido %}
+
 <body>
+   <form action="{% url 'buscaplanta' %}" method="post">
+      {% csrf_token %}
+      <input type="text" name="nombre">
+      <input type="submit" value="Buscar">
+   </form>
+   <div id="contenedor">
+      <div id="central">
+         <div id="login">
+            <div>
+               <a href="{% url 'listplantin'%}">
+                  <button type="btn-btn-primary" title="Plantines">
+                     LISTA PLANTINES
+                  </button>
+                  <a href="{% url 'listarbol' %}">
+                     <button type="btn-btn-primary" title="Arboles">
+                        LISTA ARBOLES
+                     </button>
+                     <a href="{% url 'listfrutal'%}">
+                        <button type="btn-btn-primary" title="Frutales">
+                           LISTA FRUTALES
+                        </button>
 
-<div id="contenedor">
-  <div id="central">
-      <div id="login">
-          <div>
-           <a href="{% url 'listaplantin'%}">
-           <button type="btn-btn-primary" title="Plantines" >
-             LISTA PLANTINES
-           </button>
-           <a href="{% url 'listaarbol'%}">
-           <button type="btn-btn-primary" title="Arboles" >
-              LISTA ARBOLES
-           </button>
-           <a href="{% url 'listafrutal'%}">
-           <button type="btn-btn-primary" title="Frutales" >
-              LISTA FRUTALES
-           </button>
-          </div>
-       </div>
+                     </a>
+                  </a>
+               </a>
+            </div>
+         </div>
+      </div>
    </div>
-</div>
 
- 
 </body>
 
 {% endblock contenido %}
-{% block listar %}
-{% endblock listar %}
